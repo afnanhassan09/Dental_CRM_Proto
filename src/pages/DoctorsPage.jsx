@@ -182,11 +182,10 @@ function DoctorCard({ doctor, onClick, index }) {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=')] opacity-40" />
         {/* Status Dot */}
         <div className="absolute top-3 right-3">
-          <span className={`flex items-center gap-1.5 text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm ${
-            doctor.status === 'online'
+          <span className={`flex items-center gap-1.5 text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm ${doctor.status === 'online'
               ? 'bg-white/20 text-white'
               : 'bg-black/20 text-white/70'
-          }`}>
+            }`}>
             <span className={`w-1.5 h-1.5 rounded-full ${doctor.status === 'online' ? 'bg-emerald-400 animate-pulse' : 'bg-white/40'}`} />
             {doctor.status === 'online' ? 'Active' : 'Away'}
           </span>
@@ -212,9 +211,9 @@ function DoctorCard({ doctor, onClick, index }) {
       {/* Mini Stats */}
       <div className="grid grid-cols-3 border-t border-slate-50 mx-4 mt-2 py-3">
         {[
-          { icon: Star,    value: doctor.rating,           label: 'Rating', color: 'text-amber-500' },
-          { icon: Users,   value: doctor.totalPatients >= 1000 ? `${(doctor.totalPatients / 1000).toFixed(1)}k` : doctor.totalPatients, label: 'Patients', color: 'text-blue-500' },
-          { icon: Calendar, value: doctor.apptsToday,      label: 'Today',  color: 'text-emerald-500' },
+          { icon: Star, value: doctor.rating, label: 'Rating', color: 'text-amber-500' },
+          { icon: Users, value: doctor.totalPatients >= 1000 ? `${(doctor.totalPatients / 1000).toFixed(1)}k` : doctor.totalPatients, label: 'Patients', color: 'text-blue-500' },
+          { icon: Calendar, value: doctor.apptsToday, label: 'Today', color: 'text-emerald-500' },
         ].map(stat => (
           <div key={stat.label} className="text-center">
             <div className="flex items-center justify-center gap-1 mb-0.5">
@@ -397,7 +396,7 @@ function SlideOverPanel({ doctor, onClose }) {
    MAIN PAGE
    ══════════════════════════════════════════════ */
 export default function DoctorsPage() {
-  const [search, setSearch]     = useState('');
+  const [search, setSearch] = useState('');
   const [roleFilter, setRoleFilter] = useState('All');
   const [selectedDoc, setSelectedDoc] = useState(null);
 
@@ -410,7 +409,7 @@ export default function DoctorsPage() {
   }, [search, roleFilter]);
 
   const activeCount = DOCTORS.filter(d => d.status === 'online').length;
-  const totalToday  = DOCTORS.reduce((s, d) => s + d.apptsToday, 0);
+  const totalToday = DOCTORS.reduce((s, d) => s + d.apptsToday, 0);
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-sans">
@@ -440,16 +439,15 @@ export default function DoctorsPage() {
             className="w-full h-10 pl-10 pr-4 bg-white rounded-xl border-2 border-slate-100 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-50 transition-all font-medium"
           />
         </div>
-        <div className="flex gap-1.5 flex-wrap">
+        <div className="flex gap-1.5 flex-wrap overflow-x-auto">
           {['All', 'General Dentist', 'Orthodontist', 'Hygienist', 'Oral Surgeon'].map(r => (
             <button
               key={r}
               onClick={() => setRoleFilter(r)}
-              className={`px-3.5 py-2 rounded-xl text-[11px] font-bold transition-all ${
-                roleFilter === r
+              className={`px-3.5 py-2 rounded-xl text-[11px] font-bold transition-all ${roleFilter === r
                   ? 'bg-slate-800 text-white shadow-md'
                   : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-300'
-              }`}
+                }`}
             >
               {r}
             </button>
@@ -458,7 +456,7 @@ export default function DoctorsPage() {
       </div>
 
       {/* Doctor Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {filtered.map((doc, i) => (
           <DoctorCard key={doc.id} doctor={doc} index={i} onClick={() => setSelectedDoc(doc)} />
         ))}

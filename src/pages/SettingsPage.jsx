@@ -31,14 +31,14 @@ import {
    MOCK DATA
    ══════════════════════════════════════════════ */
 const TABS = [
-  { id: 'general',       label: 'General',       icon: Building2 },
-  { id: 'staff',         label: 'Staff',         icon: Users },
-  { id: 'services',      label: 'Services',      icon: FileText },
-  { id: 'billing',       label: 'Billing',       icon: CreditCard },
+  { id: 'general', label: 'General', icon: Building2 },
+  { id: 'staff', label: 'Staff', icon: Users },
+  { id: 'services', label: 'Services', icon: FileText },
+  { id: 'billing', label: 'Billing', icon: CreditCard },
   { id: 'notifications', label: 'Notifications', icon: Bell },
 ];
 
-const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const DEFAULT_HOURS = DAYS.map((day, i) => ({
   day,
@@ -48,22 +48,22 @@ const DEFAULT_HOURS = DAYS.map((day, i) => ({
 }));
 
 const TIME_OPTIONS = [
-  '07:00 AM','07:30 AM','08:00 AM','08:30 AM','09:00 AM','09:30 AM','10:00 AM','10:30 AM',
-  '11:00 AM','11:30 AM','12:00 PM','12:30 PM','01:00 PM','01:30 PM','02:00 PM','02:30 PM',
-  '03:00 PM','03:30 PM','04:00 PM','04:30 PM','05:00 PM','05:30 PM','06:00 PM','06:30 PM',
-  '07:00 PM','07:30 PM','08:00 PM',
+  '07:00 AM', '07:30 AM', '08:00 AM', '08:30 AM', '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM',
+  '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM',
+  '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM', '06:30 PM',
+  '07:00 PM', '07:30 PM', '08:00 PM',
 ];
 
 const STAFF_MEMBERS = [
-  { id: 1, name: 'Dr. Sarah Wilson',   role: 'Orthodontist',     status: 'active',   avatar: 'SW', gradient: 'from-rose-500 to-pink-600',   email: 'sarah@dentalcare.com' },
-  { id: 2, name: 'Dr. Mike Chen',      role: 'General Dentist',  status: 'active',   avatar: 'MC', gradient: 'from-blue-500 to-indigo-600',  email: 'mike@dentalcare.com' },
-  { id: 3, name: 'Jessica Lee',        role: 'Hygienist',        status: 'active',   avatar: 'JL', gradient: 'from-emerald-500 to-teal-600', email: 'jessica@dentalcare.com' },
-  { id: 4, name: 'Dr. Kerri Myers',    role: 'Endodontist',      status: 'active',   avatar: 'KM', gradient: 'from-violet-500 to-purple-600', email: 'kerri@dentalcare.com' },
-  { id: 5, name: 'Lisa Park',          role: 'Receptionist',     status: 'inactive', avatar: 'LP', gradient: 'from-slate-400 to-slate-500',  email: 'lisa@dentalcare.com' },
+  { id: 1, name: 'Dr. Sarah Wilson', role: 'Orthodontist', status: 'active', avatar: 'SW', gradient: 'from-rose-500 to-pink-600', email: 'sarah@dentalcare.com' },
+  { id: 2, name: 'Dr. Mike Chen', role: 'General Dentist', status: 'active', avatar: 'MC', gradient: 'from-blue-500 to-indigo-600', email: 'mike@dentalcare.com' },
+  { id: 3, name: 'Jessica Lee', role: 'Hygienist', status: 'active', avatar: 'JL', gradient: 'from-emerald-500 to-teal-600', email: 'jessica@dentalcare.com' },
+  { id: 4, name: 'Dr. Kerri Myers', role: 'Endodontist', status: 'active', avatar: 'KM', gradient: 'from-violet-500 to-purple-600', email: 'kerri@dentalcare.com' },
+  { id: 5, name: 'Lisa Park', role: 'Receptionist', status: 'inactive', avatar: 'LP', gradient: 'from-slate-400 to-slate-500', email: 'lisa@dentalcare.com' },
 ];
 
 const BRAND_COLORS = [
-  '#0d9488','#0891b2','#2563eb','#7c3aed','#db2777','#ea580c','#16a34a','#475569',
+  '#0d9488', '#0891b2', '#2563eb', '#7c3aed', '#db2777', '#ea580c', '#16a34a', '#475569',
 ];
 
 /* ══════════════════════════════════════════════
@@ -135,9 +135,9 @@ function Section({ title, description, children }) {
    ══════════════════════════════════════════════ */
 function GeneralTab() {
   const [clinicName, setClinicName] = useState('DentalCare Clinic');
-  const [phone, setPhone]          = useState('+1 (555) 000-1234');
-  const [address, setAddress]      = useState('456 Medical Plaza, Suite 200, Springfield');
-  const [hours, setHours]          = useState(DEFAULT_HOURS);
+  const [phone, setPhone] = useState('+1 (555) 000-1234');
+  const [address, setAddress] = useState('456 Medical Plaza, Suite 200, Springfield');
+  const [hours, setHours] = useState(DEFAULT_HOURS);
   const [brandColor, setBrandColor] = useState('#0d9488');
 
   function updateHour(index, field, value) {
@@ -197,9 +197,9 @@ function GeneralTab() {
       <Section title="Operating Hours" description="Set your weekly schedule">
         <div className="space-y-2">
           {hours.map((h, i) => (
-            <div key={h.day} className={`flex items-center gap-4 py-2.5 px-4 rounded-xl transition-all ${h.closed ? 'bg-slate-50 opacity-60' : 'hover:bg-slate-50'}`}>
+            <div key={h.day} className={`flex items-center gap-4 py-2.5 px-4 rounded-xl transition-all flex-wrap ${h.closed ? 'bg-slate-50 opacity-60' : 'hover:bg-slate-50'}`}>
               <span className="w-24 text-[13px] font-bold text-slate-700">{h.day}</span>
-              
+
               <select
                 value={h.open}
                 onChange={(e) => updateHour(i, 'open', e.target.value)}
@@ -236,10 +236,10 @@ function GeneralTab() {
    TAB: STAFF
    ══════════════════════════════════════════════ */
 function StaffTab() {
-  const [staff, setStaff]       = useState(STAFF_MEMBERS);
+  const [staff, setStaff] = useState(STAFF_MEMBERS);
   const [showModal, setShowModal] = useState(false);
-  const [newName, setNewName]   = useState('');
-  const [newRole, setNewRole]   = useState('');
+  const [newName, setNewName] = useState('');
+  const [newRole, setNewRole] = useState('');
   const [newEmail, setNewEmail] = useState('');
 
   function removeStaff(id) {
@@ -249,7 +249,7 @@ function StaffTab() {
   function addStaff() {
     if (!newName.trim() || !newRole.trim()) return;
     const initials = newName.split(' ').map(n => n[0]).join('').toUpperCase();
-    const gradients = ['from-cyan-500 to-blue-600','from-amber-500 to-orange-600','from-fuchsia-500 to-pink-600'];
+    const gradients = ['from-cyan-500 to-blue-600', 'from-amber-500 to-orange-600', 'from-fuchsia-500 to-pink-600'];
     setStaff(prev => [...prev, {
       id: Date.now(),
       name: newName,
@@ -297,11 +297,10 @@ function StaffTab() {
                 <p className="text-[13px] font-bold text-slate-800">{member.name}</p>
                 <p className="text-[11px] text-slate-400 font-medium">{member.role} • {member.email}</p>
               </div>
-              <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full capitalize ${
-                member.status === 'active'
+              <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full capitalize ${member.status === 'active'
                   ? 'bg-emerald-50 text-emerald-700 border border-emerald-100'
                   : 'bg-slate-100 text-slate-500 border border-slate-200'
-              }`}>
+                }`}>
                 {member.status}
               </span>
               <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -374,9 +373,9 @@ function StaffTab() {
    TAB: NOTIFICATIONS (System Preferences)
    ══════════════════════════════════════════════ */
 function NotificationsTab() {
-  const [theme, setTheme]       = useState('light');
+  const [theme, setTheme] = useState('light');
   const [emailRemind, setEmailRemind] = useState(true);
-  const [smsConfirm, setSmsConfirm]   = useState(true);
+  const [smsConfirm, setSmsConfirm] = useState(true);
   const [dailySummary, setDailySummary] = useState(false);
   const [apptReminder, setApptReminder] = useState(true);
   const [marketingEmail, setMarketingEmail] = useState(false);
@@ -387,8 +386,8 @@ function NotificationsTab() {
       <Section title="Appearance" description="Choose your preferred theme">
         <div className="flex gap-3">
           {[
-            { id: 'light',  label: 'Light',  icon: Sun },
-            { id: 'dark',   label: 'Dark',   icon: Moon },
+            { id: 'light', label: 'Light', icon: Sun },
+            { id: 'dark', label: 'Dark', icon: Moon },
             { id: 'system', label: 'System', icon: Monitor },
           ].map(opt => (
             <button
@@ -422,8 +421,8 @@ function NotificationsTab() {
       {/* Security */}
       <Section title="Security" description="Account security preferences">
         <div className="divide-y divide-slate-50">
-          <Toggle checked={true} onChange={() => {}} label="Two-Factor Authentication" description="Require 2FA for all admin accounts" />
-          <Toggle checked={true} onChange={() => {}} label="Session Timeout" description="Auto-logout after 30 minutes of inactivity" />
+          <Toggle checked={true} onChange={() => { }} label="Two-Factor Authentication" description="Require 2FA for all admin accounts" />
+          <Toggle checked={true} onChange={() => { }} label="Session Timeout" description="Auto-logout after 30 minutes of inactivity" />
         </div>
       </Section>
     </motion.div>

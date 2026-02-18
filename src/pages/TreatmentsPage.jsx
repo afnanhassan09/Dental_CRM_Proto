@@ -22,41 +22,41 @@ import {
    MOCK DATA
    ══════════════════════════════════════════════ */
 const PROCEDURES = [
-  { id: 1,  name: 'Routine Cleaning',       code: 'D1110', price: 120,   cat: 'General' },
-  { id: 2,  name: 'Comprehensive Exam',     code: 'D0150', price: 85,    cat: 'General' },
-  { id: 3,  name: 'Dental X-Ray (Full)',     code: 'D0210', price: 150,   cat: 'General' },
-  { id: 4,  name: 'Fluoride Treatment',      code: 'D1206', price: 45,    cat: 'General' },
-  { id: 5,  name: 'Tooth Filling (Composite)', code: 'D2391', price: 225, cat: 'General' },
-  { id: 6,  name: 'Zirconia Crown',          code: 'D2740', price: 1200,  cat: 'General' },
-  { id: 7,  name: 'Braces (Full Treatment)', code: 'D8080', price: 5500,  cat: 'Orthodontics' },
-  { id: 8,  name: 'Invisalign Aligner',      code: 'D8040', price: 4800,  cat: 'Orthodontics' },
-  { id: 9,  name: 'Retainer (Hawley)',        code: 'D8680', price: 350,   cat: 'Orthodontics' },
-  { id: 10, name: 'Bracket Replacement',     code: 'D8670', price: 75,    cat: 'Orthodontics' },
-  { id: 11, name: 'Root Canal (Anterior)',   code: 'D3310', price: 950,   cat: 'Surgery' },
-  { id: 12, name: 'Root Canal (Molar)',      code: 'D3330', price: 1350,  cat: 'Surgery' },
-  { id: 13, name: 'Tooth Extraction',        code: 'D7140', price: 275,   cat: 'Surgery' },
-  { id: 14, name: 'Wisdom Tooth Removal',    code: 'D7230', price: 450,   cat: 'Surgery' },
-  { id: 15, name: 'Bone Graft',              code: 'D7953', price: 800,   cat: 'Surgery' },
-  { id: 16, name: 'Teeth Whitening',         code: 'D9972', price: 550,   cat: 'Cosmetic' },
-  { id: 17, name: 'Porcelain Veneer',        code: 'D2962', price: 1500,  cat: 'Cosmetic' },
-  { id: 18, name: 'Dental Bonding',          code: 'D2330', price: 350,   cat: 'Cosmetic' },
-  { id: 19, name: 'Gum Contouring',          code: 'D4210', price: 900,   cat: 'Cosmetic' },
+  { id: 1, name: 'Routine Cleaning', code: 'D1110', price: 120, cat: 'General' },
+  { id: 2, name: 'Comprehensive Exam', code: 'D0150', price: 85, cat: 'General' },
+  { id: 3, name: 'Dental X-Ray (Full)', code: 'D0210', price: 150, cat: 'General' },
+  { id: 4, name: 'Fluoride Treatment', code: 'D1206', price: 45, cat: 'General' },
+  { id: 5, name: 'Tooth Filling (Composite)', code: 'D2391', price: 225, cat: 'General' },
+  { id: 6, name: 'Zirconia Crown', code: 'D2740', price: 1200, cat: 'General' },
+  { id: 7, name: 'Braces (Full Treatment)', code: 'D8080', price: 5500, cat: 'Orthodontics' },
+  { id: 8, name: 'Invisalign Aligner', code: 'D8040', price: 4800, cat: 'Orthodontics' },
+  { id: 9, name: 'Retainer (Hawley)', code: 'D8680', price: 350, cat: 'Orthodontics' },
+  { id: 10, name: 'Bracket Replacement', code: 'D8670', price: 75, cat: 'Orthodontics' },
+  { id: 11, name: 'Root Canal (Anterior)', code: 'D3310', price: 950, cat: 'Surgery' },
+  { id: 12, name: 'Root Canal (Molar)', code: 'D3330', price: 1350, cat: 'Surgery' },
+  { id: 13, name: 'Tooth Extraction', code: 'D7140', price: 275, cat: 'Surgery' },
+  { id: 14, name: 'Wisdom Tooth Removal', code: 'D7230', price: 450, cat: 'Surgery' },
+  { id: 15, name: 'Bone Graft', code: 'D7953', price: 800, cat: 'Surgery' },
+  { id: 16, name: 'Teeth Whitening', code: 'D9972', price: 550, cat: 'Cosmetic' },
+  { id: 17, name: 'Porcelain Veneer', code: 'D2962', price: 1500, cat: 'Cosmetic' },
+  { id: 18, name: 'Dental Bonding', code: 'D2330', price: 350, cat: 'Cosmetic' },
+  { id: 19, name: 'Gum Contouring', code: 'D4210', price: 900, cat: 'Cosmetic' },
 ];
 
 const CATEGORIES = ['All', 'General', 'Orthodontics', 'Surgery', 'Cosmetic'];
 
 const CAT_COLORS = {
-  'All':           { bg: 'bg-slate-100',   text: 'text-slate-600',   active: 'bg-slate-800 text-white' },
-  'General':       { bg: 'bg-emerald-50',  text: 'text-emerald-600', active: 'bg-emerald-600 text-white' },
-  'Orthodontics':  { bg: 'bg-blue-50',     text: 'text-blue-600',    active: 'bg-blue-600 text-white' },
-  'Surgery':       { bg: 'bg-rose-50',     text: 'text-rose-600',    active: 'bg-rose-600 text-white' },
-  'Cosmetic':      { bg: 'bg-violet-50',   text: 'text-violet-600',  active: 'bg-violet-600 text-white' },
+  'All': { bg: 'bg-slate-100', text: 'text-slate-600', active: 'bg-slate-800 text-white' },
+  'General': { bg: 'bg-emerald-50', text: 'text-emerald-600', active: 'bg-emerald-600 text-white' },
+  'Orthodontics': { bg: 'bg-blue-50', text: 'text-blue-600', active: 'bg-blue-600 text-white' },
+  'Surgery': { bg: 'bg-rose-50', text: 'text-rose-600', active: 'bg-rose-600 text-white' },
+  'Cosmetic': { bg: 'bg-violet-50', text: 'text-violet-600', active: 'bg-violet-600 text-white' },
 };
 
 const PATIENTS_LIST = [
-  { id: 1, name: 'James Wilson',    ins: 'BlueCross PPO' },
-  { id: 2, name: 'Emma Thompson',   ins: 'Delta Dental' },
-  { id: 3, name: 'Sophia Garcia',   ins: 'Cigna DHMO' },
+  { id: 1, name: 'James Wilson', ins: 'BlueCross PPO' },
+  { id: 2, name: 'Emma Thompson', ins: 'Delta Dental' },
+  { id: 3, name: 'Sophia Garcia', ins: 'Cigna DHMO' },
 ];
 
 const INSURANCE_RATE = 0.15; // 15% coverage mock
@@ -185,8 +185,8 @@ function LineItem({ item, onQtyChange, onRemove }) {
    MAIN PAGE
    ══════════════════════════════════════════════ */
 export default function TreatmentsPage() {
-  const [search, setSearch]             = useState('');
-  const [activeCat, setActiveCat]       = useState('All');
+  const [search, setSearch] = useState('');
+  const [activeCat, setActiveCat] = useState('All');
   const [invoiceItems, setInvoiceItems] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(PATIENTS_LIST[0]);
   const [showPatientDd, setShowPatientDd] = useState(false);
@@ -196,7 +196,7 @@ export default function TreatmentsPage() {
     return PROCEDURES.filter(p => {
       const matchCat = activeCat === 'All' || p.cat === activeCat;
       const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) ||
-                          p.code.toLowerCase().includes(search.toLowerCase());
+        p.code.toLowerCase().includes(search.toLowerCase());
       return matchCat && matchSearch;
     });
   }, [search, activeCat]);
@@ -227,10 +227,10 @@ export default function TreatmentsPage() {
   }
 
   /* ── Totals ── */
-  const subtotal  = invoiceItems.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const subtotal = invoiceItems.reduce((sum, i) => sum + i.price * i.qty, 0);
   const insurance = Math.round(subtotal * INSURANCE_RATE);
-  const total     = subtotal - insurance;
-  const cartIds   = new Set(invoiceItems.map(i => i.id));
+  const total = subtotal - insurance;
+  const cartIds = new Set(invoiceItems.map(i => i.id));
 
   return (
     <motion.div
@@ -250,12 +250,12 @@ export default function TreatmentsPage() {
       </header>
 
       {/* ═══════════ MAIN SPLIT ═══════════ */}
-      <div className="flex flex-1 gap-6 overflow-hidden min-h-0">
+      <div className="flex flex-1 gap-6 overflow-hidden min-h-0 flex-col xl:flex-row">
 
         {/* ─────────────────────────────────────
              LEFT: PROCEDURE CATALOG (60%)
            ───────────────────────────────────── */}
-        <section className="flex-[3] flex flex-col min-w-0 min-h-0">
+        <section className="flex-[3] flex flex-col min-w-0 min-h-0 xl:min-h-0">
 
           {/* Search */}
           <div className="relative mb-4">
@@ -324,7 +324,7 @@ export default function TreatmentsPage() {
         {/* ─────────────────────────────────────
              RIGHT: INVOICE (40%)
            ───────────────────────────────────── */}
-        <aside className="flex-[2] flex flex-col min-w-[340px] max-w-[480px]">
+        <aside className="flex-[2] flex flex-col min-w-0 xl:min-w-[340px] xl:max-w-[480px]">
           <div className="bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col h-full relative overflow-hidden">
             {/* Paper texture */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0idHJhbnNwYXJlbnQiLz4KPHBhdGggZD0iTTAgMzBoNjAiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==')] opacity-50 pointer-events-none" />

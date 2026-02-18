@@ -24,9 +24,9 @@ import {
    MOCK DATA
    ════════════════════════════════════════════ */
 
-const sparkPatients     = [20,35,25,45,30,55,40,60,50,65,55,70];
-const sparkAppointments = [10,25,15,40,20,35,45,30,50,35,55,48];
-const sparkRevenue      = [30,45,35,55,40,65,50,70,60,80,65,85];
+const sparkPatients = [20, 35, 25, 45, 30, 55, 40, 60, 50, 65, 55, 70];
+const sparkAppointments = [10, 25, 15, 40, 20, 35, 45, 30, 50, 35, 55, 48];
+const sparkRevenue = [30, 45, 35, 55, 40, 65, 50, 70, 60, 80, 65, 85];
 
 const revenueData = [
   { month: 'Jan', appointments: 350, surgeries: 120 },
@@ -45,27 +45,27 @@ const revenueData = [
 
 const doctors = [
   { name: 'Dr. Lillie Kennedy', specialty: 'Periodontist - 9 yrs', rating: 5.0, avatar: 'LK', color: 'from-rose-400 to-rose-600' },
-  { name: 'Dr. Kerri Myers',   specialty: 'Endodontist - 6 yrs',  rating: 4.9, avatar: 'KM', color: 'from-violet-400 to-violet-600' },
-  { name: 'Dr. Tobias Wong',   specialty: 'Orthodontist - 5 yrs', rating: 4.8, avatar: 'TW', color: 'from-blue-400 to-blue-600' },
+  { name: 'Dr. Kerri Myers', specialty: 'Endodontist - 6 yrs', rating: 4.9, avatar: 'KM', color: 'from-violet-400 to-violet-600' },
+  { name: 'Dr. Tobias Wong', specialty: 'Orthodontist - 5 yrs', rating: 4.8, avatar: 'TW', color: 'from-blue-400 to-blue-600' },
 ];
 
 const todayAppts = [
-  { id: 1, name: 'Kitty Miller',   type: 'Consultation', time: '09:00', color: 'bg-rose-500',   avatar: 'KM', avatarColor: 'from-rose-400 to-rose-600' },
-  { id: 2, name: 'Anne Wallace',   type: 'Medication',   time: '09:45', color: 'bg-amber-500',  avatar: 'AW', avatarColor: 'from-amber-400 to-amber-600' },
-  { id: 3, name: 'Lesley Chaney',  type: 'Laboratory',   time: '10:15', color: 'bg-blue-500',   avatar: 'LC', avatarColor: 'from-blue-400 to-blue-600' },
-  { id: 4, name: 'Darcy May',      type: 'Check-up',     time: '11:30', color: 'bg-emerald-500', avatar: 'DM', avatarColor: 'from-emerald-400 to-emerald-600' },
+  { id: 1, name: 'Kitty Miller', type: 'Consultation', time: '09:00', color: 'bg-rose-500', avatar: 'KM', avatarColor: 'from-rose-400 to-rose-600' },
+  { id: 2, name: 'Anne Wallace', type: 'Medication', time: '09:45', color: 'bg-amber-500', avatar: 'AW', avatarColor: 'from-amber-400 to-amber-600' },
+  { id: 3, name: 'Lesley Chaney', type: 'Laboratory', time: '10:15', color: 'bg-blue-500', avatar: 'LC', avatarColor: 'from-blue-400 to-blue-600' },
+  { id: 4, name: 'Darcy May', type: 'Check-up', time: '11:30', color: 'bg-emerald-500', avatar: 'DM', avatarColor: 'from-emerald-400 to-emerald-600' },
 ];
 
 const patientStats = [
-  { label: 'New Patients',    value: '2,000', change: '+20.2%', period: 'In January', icon: '👶' },
+  { label: 'New Patients', value: '2,000', change: '+20.2%', period: 'In January', icon: '👶' },
   { label: 'Return Patients', value: '6,000', change: '+22.8%', period: 'In January', icon: '🔄' },
-  { label: 'Male Patients',   value: '3,000', change: '+18.9%', period: 'In January', icon: '👨' },
+  { label: 'Male Patients', value: '3,000', change: '+18.9%', period: 'In January', icon: '👨' },
   { label: 'Female Patients', value: '4,000', change: '+48.3%', period: 'In January', icon: '👩' },
 ];
 
 /* ── Animation ── */
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
-const fadeUp  = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } } };
+const fadeUp = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } } };
 
 /* ════════════════════════════════════════════
    SPARKLINE
@@ -109,10 +109,10 @@ function MiniCalendar() {
   for (let d = 1; d <= daysInMonth; d++) days.push(d);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 h-full flex flex-col justify-center relative overflow-hidden">
-       {/* Decorative bg blur */}
-       <div className="absolute top-0 right-0 w-20 h-20 bg-primary-50 rounded-bl-full -z-0 opacity-50" />
-      
+    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 h-full flex flex-col justify-center relative overflow-hidden" style={{ padding: '10px' }}>
+      {/* Decorative bg blur */}
+      <div className="absolute top-0 right-0 w-20 h-20 bg-primary-50 rounded-bl-full -z-0 opacity-50" />
+
       <div className="relative z-10">
         <h3 className="text-[15px] font-bold text-slate-800 mb-5 tracking-tight">Appointments</h3>
         <div className="flex items-center justify-between mb-5 bg-slate-50 p-1.5 rounded-xl">
@@ -125,7 +125,7 @@ function MiniCalendar() {
           </button>
         </div>
         <div className="grid grid-cols-7 mb-2">
-          {['Su','Mo','Tu','We','Th','Fr','Sa'].map((d) => (
+          {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((d) => (
             <span key={d} className="text-center text-[11px] font-bold text-slate-400 py-1 uppercase tracking-wider">{d}</span>
           ))}
         </div>
@@ -133,11 +133,10 @@ function MiniCalendar() {
           {days.map((day, i) => (
             <div key={i} className="flex items-center justify-center w-full">
               {day ? (
-                <span className={`w-8 h-8 flex items-center justify-center rounded-lg text-[13px] font-semibold cursor-pointer transition-all duration-200 ${
-                  day === today
-                    ? 'bg-primary-600 text-white font-bold shadow-md shadow-primary-200'
-                    : 'text-slate-600 hover:bg-primary-50 hover:text-primary-700 hover:scale-110'
-                }`}>
+                <span className={`w-8 h-8 flex items-center justify-center rounded-lg text-[13px] font-semibold cursor-pointer transition-all duration-200 ${day === today
+                  ? 'bg-primary-600 text-white font-bold shadow-md shadow-primary-200'
+                  : 'text-slate-600 hover:bg-primary-50 hover:text-primary-700 hover:scale-110'
+                  }`}>
                   {day}
                 </span>
               ) : <span className="w-8 h-8" />}
@@ -158,8 +157,8 @@ function CustomTooltip({ active, payload, label }) {
       {payload.map((p, i) => (
         <p key={i} className="flex items-center justify-between gap-6 mb-1 last:mb-0">
           <span className="flex items-center gap-1.5 text-slate-500 font-medium">
-             <span className={`w-2 h-2 rounded-full ${i===0?'bg-primary-600':'bg-primary-300'}`} />
-             {p.name}
+            <span className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-primary-600' : 'bg-primary-300'}`} />
+            {p.name}
           </span>
           <span className="font-bold tabular-nums text-slate-700">{p.value}</span>
         </p>
@@ -175,18 +174,19 @@ export default function DashboardPage() {
   const [chartYear, setChartYear] = useState('2024');
 
   return (
-    <motion.div 
-      variants={stagger} initial="hidden" animate="show" 
+    <motion.div
+      variants={stagger} initial="hidden" animate="show"
       className="min-h-full flex flex-col font-sans"
     >
       {/* ── Top Bar ── */}
-      <motion.div variants={fadeUp} className="flex items-center justify-between mb-8 sticky top-0 z-30 py-2 bg-gray-50/80 backdrop-blur-sm -mx-4 px-4 sm:-mx-0 sm:px-0">
-        <div className="flex items-center gap-5">
+      <motion.div variants={fadeUp} className="flex items-center justify-between mb-8 sticky top-0 z-30 py-4 bg-gray-50/80 backdrop-blur-sm -mx-4 px-4 sm:-mx-0 sm:px-0">
+        <div className="flex items-center gap-8">
           <div className="relative group">
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
             <input
               type="text" placeholder="Search patients, files…"
               className="h-12 w-72 pl-12 pr-4 rounded-2xl border border-slate-200 bg-white text-[15px] text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-400 transition-all shadow-sm"
+              style={{ paddingLeft: '48px' }}
             />
           </div>
           <nav className="flex items-center gap-2 text-sm text-slate-400 hidden lg:flex bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm">
@@ -208,15 +208,15 @@ export default function DashboardPage() {
       {/* ════════════════════════════════════════
           GRID LAYOUT (Spacious)
          ════════════════════════════════════════ */}
-      <div className="grid grid-cols-[1fr_340px] gap-8 flex-1 pb-10">
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_320px] gap-8 flex-1 pb-10">
 
         {/* ========== CENTER COLUMN ========== */}
-        <div className="min-w-0 space-y-8">
+        <div className="min-w-0" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
           {/* ── 3 Stat Cards ── */}
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {/* Patients */}
-            <motion.div variants={fadeUp} className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 min-w-0 flex flex-col justify-between group">
+            <motion.div variants={fadeUp} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 min-w-0 flex flex-col justify-between group" style={{ padding: '10px' }}>
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 group-hover:bg-primary-100 group-hover:scale-110 transition-all duration-300">
@@ -237,7 +237,7 @@ export default function DashboardPage() {
             </motion.div>
 
             {/* Appointments */}
-            <motion.div variants={fadeUp} className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 min-w-0 flex flex-col justify-between group">
+            <motion.div variants={fadeUp} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 min-w-0 flex flex-col justify-between group" style={{ padding: '10px' }}>
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300">
@@ -258,7 +258,7 @@ export default function DashboardPage() {
             </motion.div>
 
             {/* Revenue */}
-            <motion.div variants={fadeUp} className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 min-w-0 flex flex-col justify-between group">
+            <motion.div variants={fadeUp} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 min-w-0 flex flex-col justify-between group" style={{ padding: '10px' }}>
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-100 group-hover:scale-110 transition-all duration-300">
@@ -280,9 +280,9 @@ export default function DashboardPage() {
           </div>
 
           {/* ── Available Doctors ── */}
-          <motion.div variants={fadeUp} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0">
+          <motion.div variants={fadeUp} className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0" style={{ padding: '10px' }}>
             <h2 className="text-lg font-bold text-slate-800 mb-6 tracking-tight">Available Doctors</h2>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-8">
               {doctors.map((doc) => (
                 <div key={doc.name} className="flex items-center gap-5 p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-white hover:border-primary-100 hover:shadow-lg hover:shadow-primary-100/40 transition-all duration-300 cursor-pointer group">
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${doc.color} flex items-center justify-center text-white text-base font-bold shadow-md group-hover:scale-105 transition-transform shrink-0`}>
@@ -302,34 +302,33 @@ export default function DashboardPage() {
           </motion.div>
 
           {/* ── Revenue Chart (Modern) ── */}
-          <motion.div variants={fadeUp} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0 relative overflow-hidden">
-             {/* Gradient accent */}
-             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-bl-full opacity-30 -z-0 pointer-events-none" />
-            
+          <motion.div variants={fadeUp} className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0 relative overflow-hidden" style={{ padding: '10px' }}>
+            {/* Gradient accent */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-bl-full opacity-30 -z-0 pointer-events-none" />
+
             <div className="flex items-center justify-between mb-8 relative z-10">
               <div>
                 <h2 className="text-lg font-bold text-slate-800 tracking-tight">Revenue Analytics</h2>
                 <p className="text-sm text-slate-400 mt-1">Income vs Surgeries performed</p>
               </div>
               <div className="flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-xl border border-slate-100 backdrop-blur-sm">
-                {['2024','2023','2022'].map((y) => (
+                {['2024', '2023', '2022'].map((y) => (
                   <button
                     key={y} onClick={() => setChartYear(y)}
-                    className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                      chartYear === y
-                        ? 'bg-white text-primary-700 shadow-sm'
-                        : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'
-                    }`}
+                    className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${chartYear === y
+                      ? 'bg-white text-primary-700 shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'
+                      }`}
                   >
                     {y}
                   </button>
                 ))}
               </div>
             </div>
-            
+
             <div className="w-full h-80 relative z-10">
               <ResponsiveContainer width="100%" height="100%">
-                <ComposedChart data={revenueData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <ComposedChart data={revenueData} margin={{ top: 10, right: 10, left: -20, bottom: 30 }}>
                   <defs>
                     <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#2dd4bf" stopOpacity={0.3} />
@@ -340,16 +339,16 @@ export default function DashboardPage() {
                   <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#64748b', fontWeight: 600 }} axisLine={false} tickLine={false} dy={15} />
                   <YAxis tick={{ fontSize: 12, fill: '#64748b', fontWeight: 600 }} axisLine={false} tickLine={false} dx={-10} />
                   <Tooltip content={<CustomTooltip />} cursor={{ fill: '#f1f5f9', opacity: 0.5 }} />
-                  <Bar dataKey="surgeries" name="Surgeries" fill="#14b8a6" radius={[6,6,0,0]} barSize={28} opacity={1} />
+                  <Bar dataKey="surgeries" name="Surgeries" fill="#14b8a6" radius={[6, 6, 0, 0]} barSize={28} opacity={1} />
                   <Area
                     type="monotone" dataKey="appointments" name="Appointments"
-                    stroke="#2dd4bf" strokeWidth={3} fill="url(#areaGrad)" 
+                    stroke="#2dd4bf" strokeWidth={3} fill="url(#areaGrad)"
                     dot={{ r: 0 }} activeDot={{ r: 6, strokeWidth: 0, fill: '#2dd4bf' }}
                   />
                 </ComposedChart>
               </ResponsiveContainer>
             </div>
-            <div className="flex items-center gap-8 mt-6 justify-center pt-4 opacity-80">
+            <div className="flex items-center justify-center opacity-80" style={{ marginTop: '2px', paddingTop: '0px', gap: '32px' }}>
               <span className="flex items-center gap-2 text-xs font-bold text-slate-500 bg-primary-50 px-3 py-1 rounded-full border border-primary-100">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary-400" /> Appointments
               </span>
@@ -360,7 +359,7 @@ export default function DashboardPage() {
           </motion.div>
 
           {/* ── Patient Stats ── */}
-          <motion.div variants={fadeUp} className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0">
+          <motion.div variants={fadeUp} className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0" style={{ padding: '10px' }}>
             <h2 className="text-lg font-bold text-slate-800 mb-6 tracking-tight">Patient Demographics</h2>
             <div className="grid grid-cols-4 gap-6">
               {patientStats.map((s) => (
@@ -378,14 +377,14 @@ export default function DashboardPage() {
         </div>
 
         {/* ========== RIGHT COLUMN (340px) ========== */}
-        <div className="min-w-0 space-y-8 flex flex-col">
+        <div className="min-w-0 flex flex-col" style={{ gap: '24px' }}>
           {/* Calendar */}
           <motion.div variants={fadeUp} className="flex-1 min-h-[340px]">
             <MiniCalendar />
           </motion.div>
 
           {/* Today's Appointments */}
-          <motion.div variants={fadeUp} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+          <motion.div variants={fadeUp} className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow" style={{ padding: '10px' }}>
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-[15px] font-bold text-slate-800 tracking-tight">Today&apos;s Schedule</h3>
               <button className="text-xs font-bold text-primary-600 hover:text-primary-700 bg-primary-50 px-3 py-1 rounded-full">View All</button>
@@ -409,10 +408,10 @@ export default function DashboardPage() {
           </motion.div>
 
           {/* Featured Doctor Card */}
-          <motion.div variants={fadeUp} className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 to-primary-800 p-8 text-white shadow-xl shadow-primary-900/20 group">
+          <motion.div variants={fadeUp} className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow-xl shadow-primary-900/20 group" style={{ padding: '10px' }}>
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:bg-white/15 transition-colors duration-500" />
             <div className="absolute bottom-6 right-6 w-24 h-24 bg-white/5 rounded-full blur-xl group-hover:bg-white/10 transition-colors duration-500" />
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-5 mb-6">
                 <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-xl font-bold backdrop-blur-md border border-white/20 shadow-lg">
@@ -426,12 +425,12 @@ export default function DashboardPage() {
               <div className="bg-white/10 rounded-2xl p-4 border border-white/5 backdrop-blur-md">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                     <Clock size={12} className="text-white" />
+                    <Clock size={12} className="text-white" />
                   </div>
                   <span className="text-sm font-bold tracking-wide text-white/90">Next Shift</span>
                 </div>
                 <p className="text-xs text-white/80 font-medium ml-9 leading-relaxed">
-                  Monday, 20th Jan<br/>
+                  Monday, 20th Jan<br />
                   09:00 AM – 02:00 PM
                 </p>
               </div>
@@ -439,14 +438,14 @@ export default function DashboardPage() {
           </motion.div>
 
           {/* Overview */}
-          <motion.div variants={fadeUp} className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+          <motion.div variants={fadeUp} className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow" style={{ padding: '10px' }}>
             <h3 className="text-[15px] font-bold text-slate-800 mb-6 tracking-tight">Status Overview</h3>
             <div className="space-y-6">
               {[
                 { label: 'Total Bookings', val: '482', bar: 75, barColor: 'bg-primary-500' },
-                { label: 'Completed',      val: '367', bar: 60, barColor: 'bg-emerald-500' },
-                { label: 'Cancelled',      val: '28',  bar: 15, barColor: 'bg-red-400' },
-                { label: 'Pending',        val: '87',  bar: 30, barColor: 'bg-amber-400' },
+                { label: 'Completed', val: '367', bar: 60, barColor: 'bg-emerald-500' },
+                { label: 'Cancelled', val: '28', bar: 15, barColor: 'bg-red-400' },
+                { label: 'Pending', val: '87', bar: 30, barColor: 'bg-amber-400' },
               ].map((o) => (
                 <div key={o.label}>
                   <div className="flex justify-between text-xs mb-2.5">

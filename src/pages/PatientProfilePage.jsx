@@ -96,11 +96,11 @@ function Tooth({ data, isSelected, onClick }) {
   const { id, status, condition } = data;
   const type = getToothType(id);
   const path = TOOTH_PATHS[type];
-  
-  const isMissing  = status === 'missing';
-  const isCavity   = condition === 'cavity';
+
+  const isMissing = status === 'missing';
+  const isCavity = condition === 'cavity';
   const isRootCanal = condition === 'root-canal';
-  const isCrown    = condition === 'crown';
+  const isCrown = condition === 'crown';
 
   // Sizing based on type for realistic proportions
   const widthClass = type === 'molar' ? 'w-11' : type === 'premolar' ? 'w-9' : 'w-7';
@@ -111,10 +111,10 @@ function Tooth({ data, isSelected, onClick }) {
   else if (isCavity) colorClass = 'text-red-400 drop-shadow-[0_0_3px_rgba(248,113,113,0.5)]'; // Red
   else if (isRootCanal) colorClass = 'text-amber-400'; // Yellow
   else if (isCrown) colorClass = 'text-blue-300';
-  
+
   if (isMissing) return (
     <div className={`${widthClass} h-14 flex items-center justify-center opacity-20`}>
-       <span className="text-xs font-bold text-slate-600">{id}</span>
+      <span className="text-xs font-bold text-slate-600">{id}</span>
     </div>
   );
 
@@ -126,16 +126,16 @@ function Tooth({ data, isSelected, onClick }) {
         className={`relative ${widthClass} h-14 transition-all duration-300 ${colorClass}`}
       >
         <svg viewBox="0 0 24 24" className="w-full h-full overflow-visible">
-           <path 
-             d={path} 
-             fill="currentColor" 
-             stroke="rgba(0,0,0,0.2)" 
-             strokeWidth="0.5"
-             vectorEffect="non-scaling-stroke"
-           />
-           {/* Simple root visual hint based on type */}
-           {type === 'molar' && <path d="M6 18 L4 26 M18 18 L20 26" stroke="currentColor" strokeWidth="2" opacity="0.3" fill="none" />}
-           {(type === 'premolar' || type === 'canine') && <path d="M12 18 L12 28" stroke="currentColor" strokeWidth="2" opacity="0.3" fill="none" />}
+          <path
+            d={path}
+            fill="currentColor"
+            stroke="rgba(0,0,0,0.2)"
+            strokeWidth="0.5"
+            vectorEffect="non-scaling-stroke"
+          />
+          {/* Simple root visual hint based on type */}
+          {type === 'molar' && <path d="M6 18 L4 26 M18 18 L20 26" stroke="currentColor" strokeWidth="2" opacity="0.3" fill="none" />}
+          {(type === 'premolar' || type === 'canine') && <path d="M12 18 L12 28" stroke="currentColor" strokeWidth="2" opacity="0.3" fill="none" />}
         </svg>
 
         {/* Selection / Status Dot */}
@@ -150,7 +150,7 @@ function Odontogram() {
   const [selectedTeeth, setSelectedTeeth] = useState([14, 18]); // Pre-select some for demo
 
   const toggleTooth = (id) => {
-    setSelectedTeeth(prev => 
+    setSelectedTeeth(prev =>
       prev.includes(id) ? prev.filter(t => t !== id) : [...prev, id]
     );
   };
@@ -160,10 +160,10 @@ function Odontogram() {
 
   return (
     <div className="bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-800 relative overflow-hidden h-full flex flex-col">
-       {/* Background Grid & Gradient */}
-       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/50" />
-      
+      {/* Background Grid & Gradient */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/50" />
+
       <div className="relative z-10 flex-1 flex flex-col">
         <div className="flex justify-between items-start mb-6">
           <div>
@@ -192,16 +192,16 @@ function Odontogram() {
           </div>
 
           <div className="flex items-center justify-center gap-4 opacity-30">
-             <div className="h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent" />
-             <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em] px-2">Midline</span>
-             <div className="h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent" />
+            <div className="h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent" />
+            <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em] px-2">Midline</span>
+            <div className="h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent" />
           </div>
 
           {/* Lower Arch */}
           <div className="flex justify-center items-start gap-1 px-4">
             {lowerArch.map(tooth => (
               <div key={tooth.id} className={tooth.id === 24 ? 'mr-6' : ''}>
-                 <Tooth data={tooth} isSelected={selectedTeeth.includes(tooth.id)} onClick={toggleTooth} />
+                <Tooth data={tooth} isSelected={selectedTeeth.includes(tooth.id)} onClick={toggleTooth} />
               </div>
             ))}
           </div>
@@ -217,8 +217,8 @@ function ClinicalDashboard() {
   const percentUsed = (insurance.used / insurance.limit) * 100;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
       {/* 1. X-Rays & Media */}
       <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
         <div className="flex justify-between items-center mb-5">
@@ -232,9 +232,9 @@ function ClinicalDashboard() {
             <div key={scan.id} className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-slate-100 border border-slate-200">
               <div className={`absolute inset-0 ${scan.thumb} opacity-80 group-hover:scale-110 transition-transform duration-500`} />
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                 <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
-                   <ArrowRight size={16} />
-                 </div>
+                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                  <ArrowRight size={16} />
+                </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
                 <p className="text-[11px] font-bold text-white">{scan.type}</p>
@@ -247,8 +247,8 @@ function ClinicalDashboard() {
 
       {/* 2. Insurance */}
       <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 relative overflow-hidden group">
-         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full opacity-50 transition-transform group-hover:scale-110 duration-700" />
-         
+        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full opacity-50 transition-transform group-hover:scale-110 duration-700" />
+
         <div className="flex justify-between items-start mb-6 relative z-10">
           <h3 className="text-[15px] font-bold text-slate-800">Insurance</h3>
           <span className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full text-[11px] font-bold border border-emerald-100">
@@ -259,7 +259,7 @@ function ClinicalDashboard() {
         <div className="space-y-6 relative z-10">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-               <ShieldCheck size={24} />
+              <ShieldCheck size={24} />
             </div>
             <div>
               <p className="text-sm font-bold text-slate-800">{insurance.provider}</p>
@@ -273,11 +273,11 @@ function ClinicalDashboard() {
               <span>${insurance.used.toLocaleString()} / ${insurance.limit.toLocaleString()}</span>
             </div>
             <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-100">
-              <motion.div 
-                initial={{ width: 0 }} 
-                animate={{ width: `${percentUsed}%` }} 
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${percentUsed}%` }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="h-full bg-primary-500 rounded-full" 
+                className="h-full bg-primary-500 rounded-full"
               />
             </div>
             <p className="text-[11px] text-slate-400 mt-2 text-right">Resets Jan 01, 2026</p>
@@ -297,20 +297,20 @@ function ClinicalDashboard() {
         <div className="space-y-3 mb-6 flex-1">
           {medications.map((med, i) => (
             <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-               <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm text-primary-500 shrink-0">
-                 <Pill size={18} />
-               </div>
-               <div>
-                 <p className="text-[13px] font-bold text-slate-800">{med.name}</p>
-                 <p className="text-[11px] text-slate-500 font-medium">{med.dosage} • {med.freq}</p>
-               </div>
+              <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm text-primary-500 shrink-0">
+                <Pill size={18} />
+              </div>
+              <div>
+                <p className="text-[13px] font-bold text-slate-800">{med.name}</p>
+                <p className="text-[11px] text-slate-500 font-medium">{med.dosage} • {med.freq}</p>
+              </div>
             </div>
           ))}
         </div>
 
         <div className="relative">
-          <textarea 
-            placeholder="Add a quick note..." 
+          <textarea
+            placeholder="Add a quick note..."
             className="w-full h-20 bg-slate-50 rounded-xl border border-slate-200 p-3 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-300 resize-none transition-all"
           />
           <button className="absolute bottom-2 right-2 text-xs bg-white text-slate-500 shadow-sm border border-slate-200 px-2 py-1 rounded-md font-bold hover:text-primary-600">
@@ -327,7 +327,7 @@ function ClinicalDashboard() {
    ────────────────────────────────────────── */
 export default function PatientProfilePage() {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -343,10 +343,10 @@ export default function PatientProfilePage() {
           <div className="flex gap-8 items-start">
             {/* Avatar */}
             <div className="w-28 h-28 rounded-3xl bg-slate-100 flex items-center justify-center shrink-0 shadow-inner overflow-hidden border-4 border-white shadow-slate-200/50">
-               {/* Use mock image or icon */}
-               <User size={48} className="text-slate-300" />
+              {/* Use mock image or icon */}
+              <User size={48} className="text-slate-300" />
             </div>
-            
+
             {/* Info */}
             <div className="pt-1">
               <div className="flex items-center gap-3 mb-2">
@@ -355,12 +355,12 @@ export default function PatientProfilePage() {
                   {PATIENT_DATA.id}
                 </span>
               </div>
-              
+
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-slate-500 font-medium mb-5">
-                <span className="flex items-center gap-2"><Calendar size={15} className="text-slate-400"/> {PATIENT_DATA.age} Years</span>
-                <span className="flex items-center gap-2"><User size={15} className="text-slate-400"/> {PATIENT_DATA.gender}</span>
-                <span className="flex items-center gap-2"><Phone size={15} className="text-slate-400"/> {PATIENT_DATA.phone}</span>
-                <span className="flex items-center gap-2"><MapPin size={15} className="text-slate-400"/> {PATIENT_DATA.address}</span>
+                <span className="flex items-center gap-2"><Calendar size={15} className="text-slate-400" /> {PATIENT_DATA.age} Years</span>
+                <span className="flex items-center gap-2"><User size={15} className="text-slate-400" /> {PATIENT_DATA.gender}</span>
+                <span className="flex items-center gap-2"><Phone size={15} className="text-slate-400" /> {PATIENT_DATA.phone}</span>
+                <span className="flex items-center gap-2"><MapPin size={15} className="text-slate-400" /> {PATIENT_DATA.address}</span>
               </div>
 
               <div className="flex gap-2.5">
@@ -375,14 +375,14 @@ export default function PatientProfilePage() {
           </div>
 
           {/* Key Stats */}
-          <div className="flex gap-4 w-full xl:w-auto overflow-x-auto pb-2 xl:pb-0">
+          <div className="flex gap-4 w-full xl:w-auto overflow-x-auto pb-2 xl:pb-0 flex-wrap">
             {[
               { label: 'Last Visit', val: PATIENT_DATA.lastVisit, icon: Calendar },
               { label: 'Next Appt', val: PATIENT_DATA.nextAppt, highlight: true, icon: Clock },
               { label: 'Balance', val: `$${PATIENT_DATA.balance}`, icon: FileText }
             ].map((stat, i) => (
               <div key={i} className="flex-1 min-w-[140px] xl:w-44 bg-slate-50 rounded-2xl p-4 border border-slate-200/60 text-center hover:bg-white hover:shadow-md transition-all group">
-                <div className="flex justify-center mb-2 text-slate-400 group-hover:text-primary-500 transition-colors"><stat.icon size={20}/></div>
+                <div className="flex justify-center mb-2 text-slate-400 group-hover:text-primary-500 transition-colors"><stat.icon size={20} /></div>
                 <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-1">{stat.label}</p>
                 <p className={`text-[17px] font-bold ${stat.highlight ? 'text-primary-600' : 'text-slate-700'}`}>{stat.val}</p>
               </div>
@@ -393,9 +393,9 @@ export default function PatientProfilePage() {
 
       {/* ── Main Grid ── */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        
+
         {/* Left Col: Odontogram (2/3 width on large screens) */}
-        <div className="xl:col-span-2 h-[540px]">
+        <div className="xl:col-span-2 min-h-[480px] xl:h-[540px]">
           <Odontogram />
         </div>
 
@@ -413,7 +413,7 @@ export default function PatientProfilePage() {
             <div className="absolute left-[23px] top-2 bottom-0 w-[2px] bg-slate-100" />
 
             {HISTORY_DATA.map((item, index) => (
-              <motion.div 
+              <motion.div
                 key={item.id}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -424,18 +424,18 @@ export default function PatientProfilePage() {
                 <div className={`
                    absolute left-0 top-1 w-12 h-12 flex items-center justify-center translate-x-[-50%] z-10
                 `}>
-                   <div className={`
+                  <div className={`
                      w-9 h-9 rounded-full border-[3px] border-white flex items-center justify-center shadow-sm
-                     ${item.type === 'surgery' ? 'bg-rose-100 text-rose-600' : 
-                       item.type === 'checkup' ? 'bg-emerald-100 text-emerald-600' :
-                       item.type === 'xray' ? 'bg-blue-100 text-blue-600' :
-                       'bg-slate-100 text-slate-500'}
+                     ${item.type === 'surgery' ? 'bg-rose-100 text-rose-600' :
+                      item.type === 'checkup' ? 'bg-emerald-100 text-emerald-600' :
+                        item.type === 'xray' ? 'bg-blue-100 text-blue-600' :
+                          'bg-slate-100 text-slate-500'}
                    `}>
-                      {item.type === 'surgery' ? <Stethoscope size={14} /> :
-                       item.type === 'checkup' ? <CheckCircle2 size={14} /> :
-                       item.type === 'xray' ? <FileText size={14} /> :
-                       <Activity size={14} />}
-                   </div>
+                    {item.type === 'surgery' ? <Stethoscope size={14} /> :
+                      item.type === 'checkup' ? <CheckCircle2 size={14} /> :
+                        item.type === 'xray' ? <FileText size={14} /> :
+                          <Activity size={14} />}
+                  </div>
                 </div>
 
                 <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-white hover:shadow-md transition-all cursor-pointer group-hover:border-primary-100">
@@ -449,7 +449,7 @@ export default function PatientProfilePage() {
               </motion.div>
             ))}
           </div>
-          
+
           <button className="w-full mt-4 py-3 rounded-xl border border-slate-200 text-slate-600 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
             View Full History <ArrowRight size={14} />
           </button>

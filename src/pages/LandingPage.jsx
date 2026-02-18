@@ -129,19 +129,19 @@ function DashboardMockup() {
    FEATURES DATA
    ══════════════════════════════════════════════ */
 const FEATURES = [
-  { icon: Heart,      color: 'bg-rose-100 text-rose-600',    title: 'Visual Charting',     desc: 'Mark treatments on an interactive odontogram with anatomically accurate tooth maps and real-time status tracking.' },
-  { icon: Calendar,   color: 'bg-blue-100 text-blue-600',    title: 'Smart Scheduling',    desc: 'Drag-and-drop appointment management with provider views, waitlists, and automated patient reminders.' },
-  { icon: CreditCard, color: 'bg-emerald-100 text-emerald-600', title: 'Instant Billing',  desc: 'Generate invoices from treatment catalogs, process payments, and track insurance claims — all in one click.' },
-  { icon: Users,      color: 'bg-violet-100 text-violet-600', title: 'Patient Portal',     desc: 'Give patients secure access to their records, upcoming appointments, and treatment history online.' },
-  { icon: BarChart3,  color: 'bg-amber-100 text-amber-600',  title: 'Analytics Dashboard', desc: 'Track revenue, patient flow, and provider performance with beautiful, real-time charts and reports.' },
-  { icon: Shield,     color: 'bg-cyan-100 text-cyan-600',    title: 'HIPAA Compliant',     desc: 'Enterprise-grade security with encrypted data, audit logs, role-based access, and automatic backups.' },
+  { icon: Heart, color: 'bg-rose-100 text-rose-600', title: 'Visual Charting', desc: 'Mark treatments on an interactive odontogram with anatomically accurate tooth maps and real-time status tracking.' },
+  { icon: Calendar, color: 'bg-blue-100 text-blue-600', title: 'Smart Scheduling', desc: 'Drag-and-drop appointment management with provider views, waitlists, and automated patient reminders.' },
+  { icon: CreditCard, color: 'bg-emerald-100 text-emerald-600', title: 'Instant Billing', desc: 'Generate invoices from treatment catalogs, process payments, and track insurance claims — all in one click.' },
+  { icon: Users, color: 'bg-violet-100 text-violet-600', title: 'Patient Portal', desc: 'Give patients secure access to their records, upcoming appointments, and treatment history online.' },
+  { icon: BarChart3, color: 'bg-amber-100 text-amber-600', title: 'Analytics Dashboard', desc: 'Track revenue, patient flow, and provider performance with beautiful, real-time charts and reports.' },
+  { icon: Shield, color: 'bg-cyan-100 text-cyan-600', title: 'HIPAA Compliant', desc: 'Enterprise-grade security with encrypted data, audit logs, role-based access, and automatic backups.' },
 ];
 
 const STATS = [
-  { value: '10,000+', label: 'Active Clinics' },
-  { value: '2.5M',    label: 'Patients Managed' },
-  { value: '99.9%',   label: 'Uptime SLA' },
-  { value: '4.9/5',   label: 'User Rating' },
+  { value: '10,000+', label: 'Active Clinics', icon: MapPin, color: 'text-blue-600 bg-blue-100' },
+  { value: '2.5M', label: 'Patients Managed', icon: Users, color: 'text-emerald-600 bg-emerald-100' },
+  { value: '99.9%', label: 'Uptime SLA', icon: Zap, color: 'text-amber-600 bg-amber-100' },
+  { value: '4.9/5', label: 'User Rating', icon: Star, color: 'text-primary-600 bg-primary-100' },
 ];
 
 const TESTIMONIALS = [
@@ -165,13 +165,13 @@ export default function LandingPage({ onNavigate }) {
   }, []);
 
   return (
-    <div id="landing-scroll-container" className="h-screen w-screen overflow-y-auto overflow-x-hidden bg-white font-sans scroll-smooth">
+    <div id="landing-scroll-container" className="h-screen w-full overflow-y-auto overflow-x-hidden bg-white font-sans scroll-smooth">
 
       {/* ═══════════════════════════════════
            NAVBAR
          ═══════════════════════════════════ */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-xl shadow-md border-b border-slate-100' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-6 lg:px-10">
+        <div className="mx-auto flex items-center justify-between h-16" style={{ paddingLeft: '40px', paddingRight: '40px' }}>
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 text-white flex items-center justify-center shadow-md shadow-primary-500/20">
@@ -200,7 +200,8 @@ export default function LandingPage({ onNavigate }) {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="h-10 px-5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-[13px] font-bold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow"
+              className="bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-[12px] font-bold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow whitespace-nowrap"
+              style={{ padding: '8px 18px' }}
             >
               Book a Demo
             </motion.button>
@@ -211,7 +212,7 @@ export default function LandingPage({ onNavigate }) {
       {/* ═══════════════════════════════════
            HERO SECTION
          ═══════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-50/80 via-white to-blue-50/50" />
         {/* Decorative blobs */}
@@ -219,10 +220,10 @@ export default function LandingPage({ onNavigate }) {
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl" />
         <div className="absolute top-40 right-1/3 w-40 h-40 bg-emerald-200/20 rounded-full blur-2xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-24 pb-16 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 w-full pt-20 pb-12 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16" style={{ paddingLeft: '40px', paddingRight: '40px' }}>
           {/* Left: Text */}
-          <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.div variants={fadeUp} custom={0} className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-100 rounded-full mb-6">
+          <motion.div variants={stagger} initial="hidden" animate="show" className="text-center lg:text-left flex-1">
+            <motion.div variants={fadeUp} custom={0} className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-100 rounded-full mb-6 mx-auto lg:mx-0">
               <Zap size={14} className="text-primary-600" />
               <span className="text-[12px] font-bold text-primary-700">Trusted by 10,000+ dental clinics worldwide</span>
             </motion.div>
@@ -234,29 +235,30 @@ export default function LandingPage({ onNavigate }) {
               </span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} custom={2} className="text-xl text-slate-600 leading-relaxed mb-8 max-w-lg">
+            <motion.p variants={fadeUp} custom={2} className="text-xl text-slate-600 leading-relaxed mb-8 mx-auto lg:mx-0">
               The all-in-one platform to manage patients, appointments, and billing with ease. Built for modern clinics that value efficiency and care.
             </motion.p>
 
-            <motion.div variants={fadeUp} custom={3} className="flex items-center gap-4 flex-wrap">
+            <motion.div variants={fadeUp} custom={3} className="flex items-center gap-4 flex-wrap justify-center lg:justify-start">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => onNavigate?.('dashboard')}
-                className="h-13 px-7 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-2xl text-[15px] font-bold shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow flex items-center gap-2 py-4"
+                className="bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-2xl text-[13px] font-bold shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow flex items-center gap-2 whitespace-nowrap"
+                style={{ padding: '14px 28px' }}
               >
-                Get Started Free <ArrowRight size={18} />
+                Get Started Free <ArrowRight size={16} />
               </motion.button>
-              <button className="h-13 px-7 border-2 border-slate-200 text-slate-700 rounded-2xl text-[15px] font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2.5 py-4">
-                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
-                  <Play size={14} className="text-slate-600 ml-0.5" fill="currentColor" />
+              <button className="border-2 border-slate-200 text-slate-700 rounded-2xl text-[13px] font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2.5 whitespace-nowrap" style={{ padding: '10px 28px' }}>
+                <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center">
+                  <Play size={10} className="text-slate-600 ml-0.5" fill="currentColor" />
                 </div>
                 Watch Demo
               </button>
             </motion.div>
 
             {/* Social Proof */}
-            <motion.div variants={fadeUp} custom={4} className="flex items-center gap-4 mt-10">
+            <motion.div variants={fadeUp} custom={4} className="flex items-center gap-4 justify-center lg:justify-start" style={{ marginTop: '12px' }}>
               <div className="flex -space-x-2">
                 {['from-rose-400 to-pink-500', 'from-blue-400 to-indigo-500', 'from-emerald-400 to-teal-500', 'from-amber-400 to-orange-500'].map((g, i) => (
                   <div key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${g} border-2 border-white flex items-center justify-center text-white text-[9px] font-bold shadow-sm`}>
@@ -273,16 +275,16 @@ export default function LandingPage({ onNavigate }) {
             </motion.div>
           </motion.div>
 
-          {/* Right: Floating Dashboard Mockup */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-            className="hidden lg:flex justify-center"
+            className="hidden lg:flex justify-center flex-1"
           >
             <motion.div
               animate={{ y: [0, -14, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-full"
             >
               <DashboardMockup />
             </motion.div>
@@ -293,48 +295,58 @@ export default function LandingPage({ onNavigate }) {
       {/* ═══════════════════════════════════
            STATS BAR
          ═══════════════════════════════════ */}
-      <section className="border-y border-slate-100 bg-slate-50/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {STATS.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ delay: i * 0.1 }}
-              className="text-center"
-            >
-              <p className="text-3xl font-extrabold text-slate-800 tracking-tight">{stat.value}</p>
-              <p className="text-sm text-slate-500 font-medium mt-1">{stat.label}</p>
-            </motion.div>
-          ))}
+      <section className="py-6 bg-slate-50/50">
+        <div style={{ paddingLeft: '40px', paddingRight: '40px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {STATS.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="bg-white rounded-2xl border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center text-center group cursor-default"
+                  style={{ padding: '24px' }}
+                >
+                  <div className={`w-14 h-14 rounded-2xl ${stat.color} flex items-center justify-center group-hover:rotate-6 transition-transform duration-300`} style={{ marginBottom: '20px' }}>
+                    <Icon size={26} fill="currentColor" className="opacity-80" />
+                  </div>
+                  <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight" style={{ marginBottom: '8px' }}>{stat.value}</h3>
+                  <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">{stat.label}</p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════
            FEATURES SECTION
          ═══════════════════════════════════ */}
-      <section id="features" className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section id="features" className="py-24" style={{ paddingTop: '48px', paddingBottom: '80px' }}>
+        <div style={{ paddingLeft: '40px', paddingRight: '40px' }}>
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center" style={{ marginBottom: '48px' }}
           >
             <span className="text-[12px] font-bold text-primary-600 uppercase tracking-widest">Features</span>
-            <h2 className="text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+            <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight" style={{ marginTop: '12px' }}>
               Everything Your Clinic Needs to{' '}
               <span className="bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent">Thrive</span>
             </h2>
-            <p className="text-lg text-slate-500 mt-4 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-500" style={{ maxWidth: '640px', marginLeft: 'auto', marginRight: 'auto', marginTop: '16px' }}>
               From patient check-in to treatment charting to billing — streamlined into one beautiful platform.
             </p>
           </motion.div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '24px' }}>
             {FEATURES.map((f, i) => {
               const Icon = f.icon;
               return (
@@ -345,12 +357,13 @@ export default function LandingPage({ onNavigate }) {
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
                   whileHover={{ y: -6 }}
-                  className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                  className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                  style={{ padding: '20px' }}
                 >
-                  <div className={`w-14 h-14 rounded-2xl ${f.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-14 h-14 rounded-2xl ${f.color} flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ marginBottom: '16px' }}>
                     <Icon size={24} />
                   </div>
-                  <h3 className="text-lg font-extrabold text-slate-800 mb-2">{f.title}</h3>
+                  <h3 className="text-lg font-extrabold text-slate-800" style={{ marginBottom: '8px' }}>{f.title}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
                 </motion.div>
               );
@@ -362,19 +375,19 @@ export default function LandingPage({ onNavigate }) {
       {/* ═══════════════════════════════════
            TESTIMONIALS
          ═══════════════════════════════════ */}
-      <section className="py-24 bg-slate-50/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="py-24 bg-slate-50/50" style={{ paddingBottom: '60px' }}>
+        <div style={{ paddingLeft: '40px', paddingRight: '40px' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center" style={{ marginBottom: '48px' }}
           >
             <span className="text-[12px] font-bold text-primary-600 uppercase tracking-widest">Testimonials</span>
-            <h2 className="text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">Trusted by the Best Clinics</h2>
+            <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight" style={{ marginTop: '12px' }}>Trusted by the Best Clinics</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '24px' }}>
             {TESTIMONIALS.map((t, i) => (
               <motion.div
                 key={t.name}
@@ -382,7 +395,8 @@ export default function LandingPage({ onNavigate }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-7 border border-slate-100 shadow-sm hover:shadow-lg transition-shadow"
+                className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow"
+                style={{ padding: '20px' }}
               >
                 <div className="flex gap-0.5 mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
@@ -414,16 +428,16 @@ export default function LandingPage({ onNavigate }) {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-600/30 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-3xl mx-auto text-center py-20 px-6">
+        <div className="relative z-10 text-center" style={{ paddingLeft: '40px', paddingRight: '40px', paddingTop: '48px', paddingBottom: '48px', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="text-4xl font-extrabold text-white tracking-tight" style={{ marginBottom: '16px' }}>
               Ready to modernize your practice?
             </h2>
-            <p className="text-lg text-primary-200 mb-8 max-w-xl mx-auto">
+            <p className="text-lg text-primary-200" style={{ marginBottom: '32px', maxWidth: '580px', marginLeft: 'auto', marginRight: 'auto' }}>
               Join thousands of dental professionals who've already made the switch. Start free, no credit card required.
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">
@@ -431,11 +445,12 @@ export default function LandingPage({ onNavigate }) {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => onNavigate?.('dashboard')}
-                className="h-13 px-8 bg-white text-primary-700 rounded-2xl text-[15px] font-bold shadow-2xl hover:shadow-white/20 transition-shadow flex items-center gap-2 py-4"
+                className="bg-white text-primary-700 rounded-2xl text-[13px] font-bold shadow-2xl hover:shadow-white/20 transition-shadow flex items-center gap-2 whitespace-nowrap"
+                style={{ padding: '14px 28px' }}
               >
                 Create Free Account <ArrowRight size={18} />
               </motion.button>
-              <button className="h-13 px-8 border-2 border-white/30 text-white rounded-2xl text-[15px] font-bold hover:bg-white/10 transition-all py-4">
+              <button className="border-2 border-white/30 text-white rounded-2xl text-[13px] font-bold hover:bg-white/10 transition-all whitespace-nowrap" style={{ padding: '14px 28px' }}>
                 Talk to Sales
               </button>
             </div>
@@ -446,9 +461,9 @@ export default function LandingPage({ onNavigate }) {
       {/* ═══════════════════════════════════
            FOOTER
          ═══════════════════════════════════ */}
-      <footer className="bg-slate-900 pt-16 pb-8 text-slate-400">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
+      <footer className="bg-slate-900 text-slate-400" style={{ paddingTop: '48px', paddingBottom: '32px' }}>
+        <div style={{ paddingLeft: '40px', paddingRight: '40px' }}>
+          <div className="grid grid-cols-2 md:grid-cols-5" style={{ gap: '40px', marginBottom: '48px' }}>
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
@@ -483,7 +498,7 @@ export default function LandingPage({ onNavigate }) {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4" style={{ paddingTop: '10px' }}>
             <p className="text-sm">© 2026 DentalCRM. All rights reserved.</p>
             <div className="flex items-center gap-4">
               {[Twitter, Linkedin, Github].map((Icon, i) => (

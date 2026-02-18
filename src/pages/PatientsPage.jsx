@@ -70,10 +70,10 @@ function formatCurrency(amount) {
 
 /* ── Status Badge config ── */
 const STATUS_STYLES = {
-  Active:        { bg: 'bg-emerald-50',  text: 'text-emerald-700',  dot: 'bg-emerald-500', border: 'border-emerald-100' },
-  'In Treatment': { bg: 'bg-blue-50',    text: 'text-blue-700',     dot: 'bg-blue-500',    border: 'border-blue-100' },
-  Recovery:      { bg: 'bg-amber-50',    text: 'text-amber-700',    dot: 'bg-amber-500',   border: 'border-amber-100' },
-  Archived:      { bg: 'bg-slate-50',    text: 'text-slate-500',    dot: 'bg-slate-400',   border: 'border-slate-100' },
+  Active: { bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-500', border: 'border-emerald-100' },
+  'In Treatment': { bg: 'bg-blue-50', text: 'text-blue-700', dot: 'bg-blue-500', border: 'border-blue-100' },
+  Recovery: { bg: 'bg-amber-50', text: 'text-amber-700', dot: 'bg-amber-500', border: 'border-amber-100' },
+  Archived: { bg: 'bg-slate-50', text: 'text-slate-500', dot: 'bg-slate-400', border: 'border-slate-100' },
 };
 
 /* ── Dropdown wrapper component ── */
@@ -117,7 +117,7 @@ const containerVariants = {
 };
 const rowVariants = {
   hidden: { opacity: 0, y: 15 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.4, 0.25, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.4, 0.25, 1] } },
 };
 
 const ROWS_PER_PAGE = 8;
@@ -208,9 +208,9 @@ export default function PatientsPage({ onSelectPatient }) {
         <div className="flex items-center gap-3">
           {/* Quick Stats */}
           <div className="hidden lg:flex items-center gap-4 mr-4 text-xs font-semibold text-slate-500 bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200">
-             <span className="flex items-center gap-2"><Users size={14} className="text-primary-500"/> {filteredPatients.length} Total</span>
-             <span className="w-px h-3 bg-slate-200" />
-             <span className="flex items-center gap-2"><UserCheck size={14} className="text-emerald-500"/> {PATIENTS.filter(p => p.status === 'Active').length} Active</span>
+            <span className="flex items-center gap-2"><Users size={14} className="text-primary-500" /> {filteredPatients.length} Total</span>
+            <span className="w-px h-3 bg-slate-200" />
+            <span className="flex items-center gap-2"><UserCheck size={14} className="text-emerald-500" /> {PATIENTS.filter(p => p.status === 'Active').length} Active</span>
           </div>
 
           <motion.button
@@ -274,133 +274,135 @@ export default function PatientsPage({ onSelectPatient }) {
           Data Table
          ════════════════════════════════════════ */}
       <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-        {/* Header */}
-        <div className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 px-8 py-5 border-b border-slate-100 bg-slate-50/50">
-          {['Patient Name', 'Contact', 'Age / Gender', 'Last Visit', 'Next Appt', 'Status', 'Balance', ''].map(
-            (heading, i) => (
-              <span key={i} className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                {heading}
-              </span>
-            )
-          )}
-        </div>
+        <div className="overflow-x-auto">
+          {/* Header */}
+          <div className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 px-8 py-5 border-b border-slate-100 bg-slate-50/50 min-w-[900px]">
+            {['Patient Name', 'Contact', 'Age / Gender', 'Last Visit', 'Next Appt', 'Status', 'Balance', ''].map(
+              (heading, i) => (
+                <span key={i} className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  {heading}
+                </span>
+              )
+            )}
+          </div>
 
-        {/* Rows */}
-        <motion.div variants={containerVariants} initial="hidden" animate="show" className="divide-y divide-slate-50">
-          {paginatedPatients.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-20 text-center">
-              <div className="w-20 h-20 rounded-3xl bg-slate-50 flex items-center justify-center mb-6">
-                <Search size={32} className="text-slate-300" />
+          {/* Rows */}
+          <motion.div variants={containerVariants} initial="hidden" animate="show" className="divide-y divide-slate-50">
+            {paginatedPatients.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20 text-center">
+                <div className="w-20 h-20 rounded-3xl bg-slate-50 flex items-center justify-center mb-6">
+                  <Search size={32} className="text-slate-300" />
+                </div>
+                <p className="text-lg font-bold text-slate-700">No patients found</p>
+                <p className="text-sm text-slate-400 mt-2 max-w-xs mx-auto">
+                  We couldn't find any patients matching your search. Try adjusting the filters.
+                </p>
               </div>
-              <p className="text-lg font-bold text-slate-700">No patients found</p>
-              <p className="text-sm text-slate-400 mt-2 max-w-xs mx-auto">
-                We couldn't find any patients matching your search. Try adjusting the filters.
-              </p>
-            </div>
-          )}
+            )}
 
-          {paginatedPatients.map((patient) => {
-            const statusStyle = STATUS_STYLES[patient.status] || STATUS_STYLES.Active;
-            const globalIndex = PATIENTS.indexOf(patient);
+            {paginatedPatients.map((patient) => {
+              const statusStyle = STATUS_STYLES[patient.status] || STATUS_STYLES.Active;
+              const globalIndex = PATIENTS.indexOf(patient);
 
-            return (
-              <motion.div
-                key={patient.id}
-                variants={rowVariants}
-                onClick={() => onSelectPatient?.(patient.id)}
-                className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 items-center px-8 py-5 hover:bg-slate-50/80 transition-all duration-200 cursor-pointer group relative"
-              >
-                {/* Name + Avatar */}
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${avatarGradient(globalIndex)} flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300`}>
-                    {getInitials(patient.name)}
+              return (
+                <motion.div
+                  key={patient.id}
+                  variants={rowVariants}
+                  onClick={() => onSelectPatient?.(patient.id)}
+                  className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 items-center px-8 py-5 hover:bg-slate-50/80 transition-all duration-200 cursor-pointer group relative min-w-[900px]"
+                >
+                  {/* Name + Avatar */}
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${avatarGradient(globalIndex)} flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300`}>
+                      {getInitials(patient.name)}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[15px] font-bold text-slate-700 truncate group-hover:text-primary-700 transition-colors">
+                        {patient.name}
+                      </p>
+                      <p className="text-[12px] text-slate-400 font-medium mt-0.5 tracking-wide">{patient.id}</p>
+                    </div>
                   </div>
+
+                  {/* Contact */}
                   <div className="min-w-0">
-                    <p className="text-[15px] font-bold text-slate-700 truncate group-hover:text-primary-700 transition-colors">
-                      {patient.name}
-                    </p>
-                    <p className="text-[12px] text-slate-400 font-medium mt-0.5 tracking-wide">{patient.id}</p>
+                    <div className="flex items-center gap-2 text-[13px] font-medium text-slate-600 mb-1">
+                      <Phone size={14} className="text-slate-400 shrink-0" />
+                      <span className="truncate">{patient.phone}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[13px] text-slate-400 ">
+                      <Mail size={14} className="text-slate-300 shrink-0" />
+                      <span className="truncate">{patient.email}</span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Contact */}
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2 text-[13px] font-medium text-slate-600 mb-1">
-                    <Phone size={14} className="text-slate-400 shrink-0" />
-                    <span className="truncate">{patient.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[13px] text-slate-400 ">
-                    <Mail size={14} className="text-slate-300 shrink-0" />
-                    <span className="truncate">{patient.email}</span>
-                  </div>
-                </div>
-
-                {/* Age/Gender */}
-                <span className="text-[14px] font-medium text-slate-600">
-                  {patient.age} yrs <span className="text-slate-300 mx-1">/</span> {patient.gender}
-                </span>
-
-                {/* Last Visit */}
-                <span className="text-[14px] font-medium text-slate-500">{formatDate(patient.lastVisit)}</span>
-
-                {/* Next Appt */}
-                <div className="flex items-center gap-2.5">
-                  {patient.nextAppt ? (
-                    <>
-                      <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${patient.nextApptConfirmed ? 'bg-emerald-500 shadow-sm shadow-emerald-200' : 'bg-amber-400 shadow-sm shadow-amber-200'}`} />
-                      <span className="text-[14px] font-medium text-slate-600">{formatDate(patient.nextAppt)}</span>
-                    </>
-                  ) : <span className="text-slate-300 text-sm">—</span>}
-                </div>
-
-                {/* Status */}
-                <div>
-                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider w-fit border ${statusStyle.bg} ${statusStyle.text} ${statusStyle.border}`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`} />
-                    {patient.status}
+                  {/* Age/Gender */}
+                  <span className="text-[14px] font-medium text-slate-600">
+                    {patient.age} yrs <span className="text-slate-300 mx-1">/</span> {patient.gender}
                   </span>
-                </div>
 
-                {/* Balance */}
-                <span className={`text-[14px] font-bold ${patient.balance > 0 ? 'text-slate-700' : 'text-slate-300'}`}>
-                  {formatCurrency(patient.balance)}
-                </span>
+                  {/* Last Visit */}
+                  <span className="text-[14px] font-medium text-slate-500">{formatDate(patient.lastVisit)}</span>
 
-                {/* Action */}
-                <div className="relative flex justify-end">
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setOpenActionId(openActionId === patient.id ? null : patient.id); }}
-                    className="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-white hover:shadow-sm hover:border-slate-200 text-slate-400 hover:text-slate-600 transition-all cursor-pointer"
-                  >
-                    <MoreHorizontal size={18} />
-                  </button>
-                  <AnimatePresence>
-                    {openActionId === patient.id && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: -4 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: -4 }}
-                        className="absolute right-0 top-10 w-48 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-50 ring-1 ring-slate-900/5"
-                      >
-                         <button className="w-full text-left px-5 py-3 text-[14px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary-600 transition-colors cursor-pointer border-b border-slate-50">View Profile</button>
-                         <button className="w-full text-left px-5 py-3 text-[14px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary-600 transition-colors cursor-pointer">Edit Details</button>
-                         <button className="w-full text-left px-5 py-3 text-[14px] font-medium text-red-500 hover:bg-red-50 transition-colors cursor-pointer">Archive</button>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                  {/* Next Appt */}
+                  <div className="flex items-center gap-2.5">
+                    {patient.nextAppt ? (
+                      <>
+                        <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${patient.nextApptConfirmed ? 'bg-emerald-500 shadow-sm shadow-emerald-200' : 'bg-amber-400 shadow-sm shadow-amber-200'}`} />
+                        <span className="text-[14px] font-medium text-slate-600">{formatDate(patient.nextAppt)}</span>
+                      </>
+                    ) : <span className="text-slate-300 text-sm">—</span>}
+                  </div>
 
-        {/* Pagination */}
+                  {/* Status */}
+                  <div>
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider w-fit border ${statusStyle.bg} ${statusStyle.text} ${statusStyle.border}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`} />
+                      {patient.status}
+                    </span>
+                  </div>
+
+                  {/* Balance */}
+                  <span className={`text-[14px] font-bold ${patient.balance > 0 ? 'text-slate-700' : 'text-slate-300'}`}>
+                    {formatCurrency(patient.balance)}
+                  </span>
+
+                  {/* Action */}
+                  <div className="relative flex justify-end">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setOpenActionId(openActionId === patient.id ? null : patient.id); }}
+                      className="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-white hover:shadow-sm hover:border-slate-200 text-slate-400 hover:text-slate-600 transition-all cursor-pointer"
+                    >
+                      <MoreHorizontal size={18} />
+                    </button>
+                    <AnimatePresence>
+                      {openActionId === patient.id && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.95, y: -4 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: -4 }}
+                          className="absolute right-0 top-10 w-48 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-50 ring-1 ring-slate-900/5"
+                        >
+                          <button className="w-full text-left px-5 py-3 text-[14px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary-600 transition-colors cursor-pointer border-b border-slate-50">View Profile</button>
+                          <button className="w-full text-left px-5 py-3 text-[14px] font-medium text-slate-600 hover:bg-slate-50 hover:text-primary-600 transition-colors cursor-pointer">Edit Details</button>
+                          <button className="w-full text-left px-5 py-3 text-[14px] font-medium text-red-500 hover:bg-red-50 transition-colors cursor-pointer">Archive</button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* Pagination */}
+        </div>{/* end overflow-x-auto */}
         <div className="flex items-center justify-between px-8 py-5 border-t border-slate-100 bg-slate-50/50">
           <p className="text-sm font-medium text-slate-500">
             Showing <span className="font-bold text-slate-700">{(currentPage - 1) * ROWS_PER_PAGE + 1}-{Math.min(currentPage * ROWS_PER_PAGE, filteredPatients.length)}</span> of <span className="font-bold text-slate-700">{filteredPatients.length}</span>
           </p>
           <div className="flex items-center gap-2">
             <button
-               disabled={currentPage === 1} onClick={() => setCurrentPage(p => Math.max(1, p-1))}
-               className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+              disabled={currentPage === 1} onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
             >
               <ChevronLeft size={16} />
             </button>
@@ -413,8 +415,8 @@ export default function PatientsPage({ onSelectPatient }) {
               </button>
             ))}
             <button
-               disabled={currentPage === totalPages} onClick={() => setCurrentPage(p => Math.min(totalPages, p+1))}
-               className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+              disabled={currentPage === totalPages} onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
             >
               <ChevronRight size={16} />
             </button>

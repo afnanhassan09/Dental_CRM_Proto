@@ -25,14 +25,14 @@ function ToothIcon({ size = 22 }) {
 
 /* ── Navigation Items ── */
 const navItems = [
-  { id: 'dashboard2',  label: 'Dashboard',          icon: LayoutDashboard },
-  { id: 'patients',    label: 'My Patients',        icon: Users },
-  { id: 'calendar',    label: 'Appointments',       icon: CalendarDays },
-  { id: 'treatments',  label: 'Treatments',         icon: Stethoscope },
-  { id: 'messages',    label: 'Messages',           icon: MessageSquare },
-  { id: 'profile',     label: 'Patient Profile',    icon: UserCircle },
-  { id: 'doctors',     label: 'Doctors',            icon: Grid3x3 },
-  { id: 'settings',    label: 'Settings',           icon: Settings },
+  { id: 'dashboard2', label: 'Dashboard', icon: LayoutDashboard },
+  { id: 'patients', label: 'My Patients', icon: Users },
+  { id: 'calendar', label: 'Appointments', icon: CalendarDays },
+  { id: 'treatments', label: 'Treatments', icon: Stethoscope },
+  { id: 'messages', label: 'Messages', icon: MessageSquare },
+  { id: 'profile', label: 'Patient Profile', icon: UserCircle },
+  { id: 'doctors', label: 'Doctors', icon: Grid3x3 },
+  { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar({ activePage, onNavigate }) {
@@ -44,7 +44,7 @@ export default function Sidebar({ activePage, onNavigate }) {
      */
     <div className="flex flex-col h-full">
       {/* ── Logo ── */}
-      <div className="flex items-center gap-2.5 px-5 h-14 shrink-0 border-b border-gray-100">
+      <div className="flex items-center gap-2.5 px-6 h-14 shrink-0 border-b border-gray-100" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 text-white flex items-center justify-center">
           <ToothIcon size={18} />
         </div>
@@ -52,7 +52,7 @@ export default function Sidebar({ activePage, onNavigate }) {
       </div>
 
       {/* ── User Profile ── */}
-      <div className="flex flex-col items-center py-5 px-4 border-b border-gray-100 shrink-0">
+      <div className="flex flex-col items-center py-5 px-6 border-b border-gray-100 shrink-0" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
         <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 flex items-center justify-center text-white text-lg font-bold mb-2 shadow-md">
           BH
         </div>
@@ -61,7 +61,7 @@ export default function Sidebar({ activePage, onNavigate }) {
       </div>
 
       {/* ── Navigation ── */}
-      <nav className="flex-1 overflow-y-auto py-4 px-4 space-y-1">
+      <nav className="flex-1 overflow-y-auto py-4 px-6 space-y-1" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
         {navItems.map((item) => {
           const isActive = activePage === item.id;
           const Icon = item.icon;
@@ -96,7 +96,7 @@ export default function Sidebar({ activePage, onNavigate }) {
       </nav>
 
       {/* ── Emergency Contact ── */}
-      <div className="mt-auto px-4 pb-6 shrink-0">
+      <div className="mt-auto px-6 pb-6 shrink-0" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
         <button className="flex items-center justify-center gap-2.5 w-full h-11 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 text-white text-[13px] font-bold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:scale-[1.02] transition-all duration-200 cursor-pointer">
           <PhoneCall size={16} />
           <span>Emergency Contact</span>

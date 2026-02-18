@@ -100,18 +100,18 @@ const CONVERSATIONS = [
 const MESSAGES_DATA = {
   1: [
     { id: 1, from: 'patient', text: 'Hi! I wanted to confirm my appointment for next week.', time: '9:30 AM' },
-    { id: 2, from: 'clinic',  text: 'Hello Emma! Yes, your appointment is confirmed for Oct 24th at 9:00 AM with Dr. Sarah Wilson.', time: '9:32 AM' },
+    { id: 2, from: 'clinic', text: 'Hello Emma! Yes, your appointment is confirmed for Oct 24th at 9:00 AM with Dr. Sarah Wilson.', time: '9:32 AM' },
     { id: 3, from: 'patient', text: 'Great! Should I bring anything specific?', time: '9:33 AM' },
-    { id: 4, from: 'clinic',  text: 'Please bring your insurance card and arrive 10 minutes early to fill out updated forms. Also, please don\'t eat or drink anything 2 hours before your appointment.', time: '9:35 AM' },
+    { id: 4, from: 'clinic', text: 'Please bring your insurance card and arrive 10 minutes early to fill out updated forms. Also, please don\'t eat or drink anything 2 hours before your appointment.', time: '9:35 AM' },
     { id: 5, from: 'patient', text: 'Perfect, I\'ll make sure to do that.', time: '9:36 AM' },
-    { id: 6, from: 'clinic',  text: 'Wonderful! If you have any other questions before your visit, don\'t hesitate to reach out. See you soon! 😊', time: '9:37 AM' },
+    { id: 6, from: 'clinic', text: 'Wonderful! If you have any other questions before your visit, don\'t hesitate to reach out. See you soon! 😊', time: '9:37 AM' },
     { id: 7, from: 'patient', text: 'Thank you so much! See you on the 24th 😊', time: '9:38 AM' },
   ],
   2: [
     { id: 1, from: 'patient', text: 'Hello, I had a filling done yesterday and I\'m feeling some sensitivity.', time: '11:20 AM' },
-    { id: 2, from: 'clinic',  text: 'Hi James! Some sensitivity after a filling is completely normal and should subside within a few days. Are you experiencing any sharp pain?', time: '11:25 AM' },
+    { id: 2, from: 'clinic', text: 'Hi James! Some sensitivity after a filling is completely normal and should subside within a few days. Are you experiencing any sharp pain?', time: '11:25 AM' },
     { id: 3, from: 'patient', text: 'No sharp pain, just a dull ache when I bite down on that side.', time: '11:26 AM' },
-    { id: 4, from: 'clinic',  text: 'That\'s expected. Try to chew on the opposite side for a couple of days. If the sensitivity persists beyond a week, please call us and we\'ll do a quick check.', time: '11:28 AM' },
+    { id: 4, from: 'clinic', text: 'That\'s expected. Try to chew on the opposite side for a couple of days. If the sensitivity persists beyond a week, please call us and we\'ll do a quick check.', time: '11:28 AM' },
     { id: 5, from: 'patient', text: 'Is it normal to feel some pressure after the filling?', time: '11:30 AM' },
   ],
 };
@@ -157,9 +157,9 @@ const QUICK_REPLIES = [
 
 /* ── Channel Icons ── */
 const CHANNEL_ICON = {
-  sms:      { icon: Phone,          color: 'text-blue-500' },
-  whatsapp: { icon: MessageCircle,  color: 'text-emerald-500' },
-  email:    { icon: Mail,           color: 'text-violet-500' },
+  sms: { icon: Phone, color: 'text-blue-500' },
+  whatsapp: { icon: MessageCircle, color: 'text-emerald-500' },
+  email: { icon: Mail, color: 'text-violet-500' },
 };
 
 /* ══════════════════════════════════════════════
@@ -248,15 +248,15 @@ function Bubble({ msg, index }) {
    ══════════════════════════════════════════════ */
 export default function MessagesPage() {
   const [activeConvo, setActiveConvo] = useState(1);
-  const [filter, setFilter]           = useState('all');
-  const [search, setSearch]           = useState('');
-  const [inputText, setInputText]     = useState('');
-  const [messages, setMessages]       = useState(MESSAGES_DATA);
+  const [filter, setFilter] = useState('all');
+  const [search, setSearch] = useState('');
+  const [inputText, setInputText] = useState('');
+  const [messages, setMessages] = useState(MESSAGES_DATA);
   const chatEndRef = useRef(null);
 
-  const convo   = CONVERSATIONS.find(c => c.id === activeConvo);
+  const convo = CONVERSATIONS.find(c => c.id === activeConvo);
   const context = PATIENT_CONTEXT[activeConvo] || PATIENT_CONTEXT[1];
-  const chat    = messages[activeConvo] || [];
+  const chat = messages[activeConvo] || [];
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -295,7 +295,7 @@ export default function MessagesPage() {
       {/* ═══════════════════════════════════
            LEFT: INBOX LIST (25%)
          ═══════════════════════════════════ */}
-      <aside className="w-[280px] shrink-0 border-r border-slate-100 flex flex-col bg-slate-50/50">
+      <aside className="w-[280px] shrink-0 border-r border-slate-100 flex-col bg-slate-50/50 hidden lg:flex">
         {/* Header */}
         <div className="p-4 pb-3 shrink-0">
           <div className="flex items-center justify-between mb-4">
@@ -327,11 +327,10 @@ export default function MessagesPage() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`flex-1 py-1.5 rounded-lg text-[11px] font-bold capitalize transition-all ${
-                  filter === f
+                className={`flex-1 py-1.5 rounded-lg text-[11px] font-bold capitalize transition-all ${filter === f
                     ? 'bg-slate-800 text-white shadow-sm'
                     : 'text-slate-500 hover:text-slate-700'
-                }`}
+                  }`}
               >
                 {f}
               </button>
@@ -442,11 +441,10 @@ export default function MessagesPage() {
               whileTap={{ scale: 0.95 }}
               onClick={handleSend}
               disabled={!inputText.trim()}
-              className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${
-                inputText.trim()
+              className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${inputText.trim()
                   ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-md shadow-primary-500/25'
                   : 'bg-slate-100 text-slate-300'
-              }`}
+                }`}
             >
               <Send size={15} />
             </motion.button>
@@ -457,7 +455,7 @@ export default function MessagesPage() {
       {/* ═══════════════════════════════════
            RIGHT: CONTEXT PANEL (25%)
          ═══════════════════════════════════ */}
-      <aside className="w-[280px] shrink-0 border-l border-slate-100 flex flex-col bg-slate-50/30 overflow-y-auto custom-scrollbar">
+      <aside className="w-[280px] shrink-0 border-l border-slate-100 flex-col bg-slate-50/30 overflow-y-auto custom-scrollbar hidden xl:flex">
         {/* Patient Mini Profile */}
         <div className="p-5 pb-4 text-center border-b border-slate-100">
           <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${convo?.gradient} flex items-center justify-center text-white text-xl font-bold shadow-lg mx-auto mb-3`}>

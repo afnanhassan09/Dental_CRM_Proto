@@ -22,14 +22,14 @@ import {
    CONSTANTS & DATA
    ══════════════════════════════════════════════ */
 const PROVIDERS = [
-  { id: 'p1', name: 'Dr. Sarah Wilson', role: 'Orthodontist',    avatar: 'SW', gradient: 'from-rose-500 to-pink-600',   ring: 'ring-rose-200' },
-  { id: 'p2', name: 'Dr. Mike Chen',    role: 'General Dentist', avatar: 'MC', gradient: 'from-blue-500 to-indigo-600',  ring: 'ring-blue-200' },
-  { id: 'p3', name: 'Jessica Lee',      role: 'Hygienist',       avatar: 'JL', gradient: 'from-emerald-500 to-teal-600', ring: 'ring-emerald-200' },
+  { id: 'p1', name: 'Dr. Sarah Wilson', role: 'Orthodontist', avatar: 'SW', gradient: 'from-rose-500 to-pink-600', ring: 'ring-rose-200' },
+  { id: 'p2', name: 'Dr. Mike Chen', role: 'General Dentist', avatar: 'MC', gradient: 'from-blue-500 to-indigo-600', ring: 'ring-blue-200' },
+  { id: 'p3', name: 'Jessica Lee', role: 'Hygienist', avatar: 'JL', gradient: 'from-emerald-500 to-teal-600', ring: 'ring-emerald-200' },
 ];
 
 const START_HOUR = 8;
-const END_HOUR   = 18;
-const SLOT_H     = 64;           // px per 30-min slot
+const END_HOUR = 18;
+const SLOT_H = 64;           // px per 30-min slot
 const PX_PER_MIN = SLOT_H / 30;  // ~2.13
 
 const TIME_SLOTS = Array.from({ length: (END_HOUR - START_HOUR) * 2 + 1 }, (_, i) => {
@@ -41,36 +41,36 @@ const TIME_SLOTS = Array.from({ length: (END_HOUR - START_HOUR) * 2 + 1 }, (_, i
 });
 
 const APPOINTMENTS = [
-  { id: 1, providerId: 'p1', patient: 'Emma Thompson',  tx: 'Braces Adjustment',  start: '09:00', dur: 60,  type: 'ortho',    status: 'confirmed', avatar: 'ET' },
-  { id: 2, providerId: 'p1', patient: 'Liam Johnson',   tx: 'Invisalign Scan',    start: '11:30', dur: 30,  type: 'checkup',  status: 'pending',   avatar: 'LJ' },
-  { id: 3, providerId: 'p1', patient: 'Mia Rodriguez',  tx: 'Wire Change',        start: '14:00', dur: 45,  type: 'ortho',    status: 'confirmed', avatar: 'MR' },
-  { id: 4, providerId: 'p2', patient: 'Sophia Garcia',  tx: 'Root Canal',         start: '10:00', dur: 90,  type: 'surgery',  status: 'confirmed', avatar: 'SG' },
-  { id: 5, providerId: 'p2', patient: 'James Wilson',   tx: 'Emergency Checkup',  start: '13:00', dur: 45,  type: 'consult',  status: 'arrived',   avatar: 'JW' },
-  { id: 6, providerId: 'p2', patient: 'Lucas Lee',      tx: 'Crown Prep',         start: '15:30', dur: 60,  type: 'surgery',  status: 'pending',   avatar: 'LL' },
-  { id: 7, providerId: 'p3', patient: 'Oliver Brown',   tx: 'Deep Cleaning',      start: '08:30', dur: 60,  type: 'checkup',  status: 'confirmed', avatar: 'OB' },
-  { id: 8, providerId: 'p3', patient: 'Ava Martinez',   tx: 'Whitening Session',  start: '14:00', dur: 60,  type: 'cosmetic', status: 'confirmed', avatar: 'AM' },
-  { id: 9, providerId: 'p3', patient: 'Charlotte Ng',   tx: 'Fluoride Treatment', start: '10:30', dur: 30,  type: 'checkup',  status: 'confirmed', avatar: 'CN' },
+  { id: 1, providerId: 'p1', patient: 'Emma Thompson', tx: 'Braces Adjustment', start: '09:00', dur: 60, type: 'ortho', status: 'confirmed', avatar: 'ET' },
+  { id: 2, providerId: 'p1', patient: 'Liam Johnson', tx: 'Invisalign Scan', start: '11:30', dur: 30, type: 'checkup', status: 'pending', avatar: 'LJ' },
+  { id: 3, providerId: 'p1', patient: 'Mia Rodriguez', tx: 'Wire Change', start: '14:00', dur: 45, type: 'ortho', status: 'confirmed', avatar: 'MR' },
+  { id: 4, providerId: 'p2', patient: 'Sophia Garcia', tx: 'Root Canal', start: '10:00', dur: 90, type: 'surgery', status: 'confirmed', avatar: 'SG' },
+  { id: 5, providerId: 'p2', patient: 'James Wilson', tx: 'Emergency Checkup', start: '13:00', dur: 45, type: 'consult', status: 'arrived', avatar: 'JW' },
+  { id: 6, providerId: 'p2', patient: 'Lucas Lee', tx: 'Crown Prep', start: '15:30', dur: 60, type: 'surgery', status: 'pending', avatar: 'LL' },
+  { id: 7, providerId: 'p3', patient: 'Oliver Brown', tx: 'Deep Cleaning', start: '08:30', dur: 60, type: 'checkup', status: 'confirmed', avatar: 'OB' },
+  { id: 8, providerId: 'p3', patient: 'Ava Martinez', tx: 'Whitening Session', start: '14:00', dur: 60, type: 'cosmetic', status: 'confirmed', avatar: 'AM' },
+  { id: 9, providerId: 'p3', patient: 'Charlotte Ng', tx: 'Fluoride Treatment', start: '10:30', dur: 30, type: 'checkup', status: 'confirmed', avatar: 'CN' },
 ];
 
 const WAITLIST = [
-  { id: 101, name: 'Noah Miller',    tx: 'Extraction',     urgency: 'high',   time: 'ASAP' },
-  { id: 102, name: 'Isabella Davis', tx: 'Cleaning',       urgency: 'low',    time: 'Flexible' },
-  { id: 103, name: 'Mason Wilson',   tx: 'Checkup',        urgency: 'medium', time: 'PM Pref' },
+  { id: 101, name: 'Noah Miller', tx: 'Extraction', urgency: 'high', time: 'ASAP' },
+  { id: 102, name: 'Isabella Davis', tx: 'Cleaning', urgency: 'low', time: 'Flexible' },
+  { id: 103, name: 'Mason Wilson', tx: 'Checkup', urgency: 'medium', time: 'PM Pref' },
 ];
 
 /* ── Appointment color themes ── */
 const TYPE_THEME = {
-  checkup:  { bg: 'bg-emerald-50',  border: 'border-l-emerald-500', text: 'text-emerald-700', glow: 'hover:shadow-emerald-200/60', badge: 'bg-emerald-100 text-emerald-700', dot: 'bg-emerald-500' },
-  surgery:  { bg: 'bg-blue-50',     border: 'border-l-blue-500',    text: 'text-blue-700',    glow: 'hover:shadow-blue-200/60',    badge: 'bg-blue-100 text-blue-700',       dot: 'bg-blue-500' },
-  consult:  { bg: 'bg-violet-50',   border: 'border-l-violet-500',  text: 'text-violet-700',  glow: 'hover:shadow-violet-200/60',  badge: 'bg-violet-100 text-violet-700',   dot: 'bg-violet-500' },
-  ortho:    { bg: 'bg-amber-50',    border: 'border-l-amber-500',   text: 'text-amber-700',   glow: 'hover:shadow-amber-200/60',   badge: 'bg-amber-100 text-amber-700',     dot: 'bg-amber-500' },
-  cosmetic: { bg: 'bg-pink-50',     border: 'border-l-pink-500',    text: 'text-pink-700',    glow: 'hover:shadow-pink-200/60',    badge: 'bg-pink-100 text-pink-700',       dot: 'bg-pink-500' },
+  checkup: { bg: 'bg-emerald-50', border: 'border-l-emerald-500', text: 'text-emerald-700', glow: 'hover:shadow-emerald-200/60', badge: 'bg-emerald-100 text-emerald-700', dot: 'bg-emerald-500' },
+  surgery: { bg: 'bg-blue-50', border: 'border-l-blue-500', text: 'text-blue-700', glow: 'hover:shadow-blue-200/60', badge: 'bg-blue-100 text-blue-700', dot: 'bg-blue-500' },
+  consult: { bg: 'bg-violet-50', border: 'border-l-violet-500', text: 'text-violet-700', glow: 'hover:shadow-violet-200/60', badge: 'bg-violet-100 text-violet-700', dot: 'bg-violet-500' },
+  ortho: { bg: 'bg-amber-50', border: 'border-l-amber-500', text: 'text-amber-700', glow: 'hover:shadow-amber-200/60', badge: 'bg-amber-100 text-amber-700', dot: 'bg-amber-500' },
+  cosmetic: { bg: 'bg-pink-50', border: 'border-l-pink-500', text: 'text-pink-700', glow: 'hover:shadow-pink-200/60', badge: 'bg-pink-100 text-pink-700', dot: 'bg-pink-500' },
 };
 
 const STATUS_STYLES = {
   confirmed: 'bg-emerald-500',
-  pending:   'bg-amber-400',
-  arrived:   'bg-blue-500',
+  pending: 'bg-amber-400',
+  arrived: 'bg-blue-500',
 };
 
 /* ── Helpers ── */
@@ -103,7 +103,7 @@ function startLabel(start) {
    ══════════════════════════════════════════════ */
 function MiniCalendar() {
   const [selected, setSelected] = useState(15);
-  const days = ['S','M','T','W','T','F','S'];
+  const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const today = 15;
   // Jan 2026 starts on Thursday (index 4), so 4 empty cells before day 1
   const offset = 4;
@@ -115,8 +115,8 @@ function MiniCalendar() {
       <div className="flex items-center justify-between mb-3">
         <h4 className="text-sm font-bold text-slate-800">January 2026</h4>
         <div className="flex gap-0.5">
-          <button className="w-6 h-6 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 transition-colors"><ChevronLeft size={14}/></button>
-          <button className="w-6 h-6 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 transition-colors"><ChevronRight size={14}/></button>
+          <button className="w-6 h-6 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 transition-colors"><ChevronLeft size={14} /></button>
+          <button className="w-6 h-6 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 transition-colors"><ChevronRight size={14} /></button>
         </div>
       </div>
       {/* Day Labels */}
@@ -127,9 +127,9 @@ function MiniCalendar() {
       <div className="grid grid-cols-7 gap-y-0.5">
         {Array.from({ length: offset }).map((_, i) => <span key={`e-${i}`} />)}
         {Array.from({ length: totalDays }, (_, i) => i + 1).map(d => {
-          const isToday    = d === today;
+          const isToday = d === today;
           const isSelected = d === selected;
-          const hasAppt    = [8, 12, 15, 22, 28].includes(d);
+          const hasAppt = [8, 12, 15, 22, 28].includes(d);
           return (
             <button
               key={d}
@@ -337,8 +337,8 @@ export default function AppointmentsPage() {
             <div className="space-y-2.5">
               {[
                 { label: 'Confirmed', color: 'bg-emerald-500', checked: true },
-                { label: 'Pending',   color: 'bg-amber-400',   checked: true },
-                { label: 'Arrived',   color: 'bg-blue-500',    checked: true },
+                { label: 'Pending', color: 'bg-amber-400', checked: true },
+                { label: 'Arrived', color: 'bg-blue-500', checked: true },
               ].map(f => (
                 <label key={f.label} className="flex items-center gap-2.5 text-xs font-medium text-slate-600 cursor-pointer group">
                   <span className={`w-2 h-2 rounded-full ${f.color} group-hover:scale-125 transition-transform`} />
@@ -403,7 +403,7 @@ export default function AppointmentsPage() {
           </div>
 
           {/* Scrollable Grid Body */}
-          <div className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar relative">
+          <div className="flex-1 overflow-y-auto overflow-x-auto custom-scrollbar relative">
             <div className="flex relative" style={{ height: `${gridH}px` }}>
 
               {/* Time Column */}

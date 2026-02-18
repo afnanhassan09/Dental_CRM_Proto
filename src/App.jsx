@@ -31,15 +31,15 @@ export default function App() {
      DASHBOARD LAYOUT — Sidebar + Main
      ═══════════════════════════════════ */
   return (
-    <div className="flex h-screen w-screen bg-gray-100 overflow-hidden">
+    <div className="bg-gray-100" style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden' }}>
       {/* ── SIDEBAR — Rigid 240px, never shrinks ── */}
-      <aside className="w-60 flex-shrink-0 h-full bg-white border-r border-gray-200 flex flex-col overflow-y-auto">
+      <aside className="bg-white border-r border-gray-200 flex flex-col" style={{ width: '240px', flexShrink: 0, height: '100%', overflowY: 'auto' }}>
         <Sidebar activePage={activePage} onNavigate={setActivePage} />
       </aside>
 
       {/* ── MAIN CONTENT — Takes ALL remaining space, scrollable ── */}
-      <main className="flex-1 min-w-0 h-full overflow-y-auto overflow-x-hidden">
-        <div className="p-8 pb-20 h-full flex flex-col">
+      <main className="" style={{ flex: 1, minWidth: 0, height: '100%', overflowY: 'auto', overflowX: 'hidden', padding: '32px', paddingBottom: '30px' }}>
+        <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', marginLeft: '8px' }}>
           {(activePage === 'dashboard' || activePage === 'dashboard2') && (
             <DashboardPage />
           )}
@@ -73,33 +73,33 @@ export default function App() {
           )}
 
           {activePage !== 'dashboard' &&
-           activePage !== 'dashboard2' &&
-           activePage !== 'patients' &&
-           activePage !== 'profile' &&
-           activePage !== 'patient-profile' &&
-           activePage !== 'calendar' &&
-           activePage !== 'treatments' &&
-           activePage !== 'messages' &&
-           activePage !== 'settings' &&
-           activePage !== 'doctors' &&
-           activePage !== 'cards' && (
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
-              className="flex flex-col items-center justify-center h-[60vh] text-center"
-            >
-              <div className="w-20 h-20 rounded-3xl bg-primary-50 flex items-center justify-center mb-5">
-                <span className="text-4xl">🦷</span>
-              </div>
-              <h2 className="text-xl font-bold text-slate-800 mb-2 capitalize">
-                {activePage.replace('-', ' ')}
-              </h2>
-              <p className="text-sm text-slate-400 max-w-md">
-                This page is under construction. We're building something beautiful — stay tuned!
-              </p>
-            </motion.div>
-          )}
+            activePage !== 'dashboard2' &&
+            activePage !== 'patients' &&
+            activePage !== 'profile' &&
+            activePage !== 'patient-profile' &&
+            activePage !== 'calendar' &&
+            activePage !== 'treatments' &&
+            activePage !== 'messages' &&
+            activePage !== 'settings' &&
+            activePage !== 'doctors' &&
+            activePage !== 'cards' && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35 }}
+                className="flex flex-col items-center justify-center h-[60vh] text-center"
+              >
+                <div className="w-20 h-20 rounded-3xl bg-primary-50 flex items-center justify-center mb-5">
+                  <span className="text-4xl">🦷</span>
+                </div>
+                <h2 className="text-xl font-bold text-slate-800 mb-2 capitalize">
+                  {activePage.replace('-', ' ')}
+                </h2>
+                <p className="text-sm text-slate-400 max-w-md">
+                  This page is under construction. We're building something beautiful — stay tuned!
+                </p>
+              </motion.div>
+            )}
         </div>
       </main>
     </div>
