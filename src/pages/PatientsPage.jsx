@@ -94,6 +94,7 @@ function SelectDropdown({ id, value, onChange, options, icon: Icon }) {
           transition-all duration-200 cursor-pointer shadow-sm hover:border-slate-300
           ${Icon ? 'pl-10 pr-10' : 'pl-4 pr-10'}
         `}
+        style={Icon ? { paddingLeft: '34px', paddingRight: '6px' } : { paddingRight: '6px' }}
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
@@ -198,7 +199,7 @@ export default function PatientsPage({ onSelectPatient }) {
       {/* ════════════════════════════════════════
           Sticky Header
          ════════════════════════════════════════ */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 sticky top-0 z-30 py-3 bg-gray-100/80 backdrop-blur-md -mx-8 px-8 border-b border-transparent transition-all">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 sticky top-0 z-30 py-3 bg-gray-100/80 backdrop-blur-md -mx-8 px-8 border-b border-transparent transition-all" style={{ paddingTop: '12px', paddingBottom: '12px' }}>
         <div>
           <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Patient List</h1>
           <p className="text-sm text-slate-500 mt-1 font-medium">
@@ -207,7 +208,7 @@ export default function PatientsPage({ onSelectPatient }) {
         </div>
         <div className="flex items-center gap-3">
           {/* Quick Stats */}
-          <div className="hidden lg:flex items-center gap-4 mr-4 text-xs font-semibold text-slate-500 bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200">
+          <div className="hidden lg:flex items-center gap-4 mr-4 text-xs font-semibold text-slate-500 bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200" style={{ padding: '2px 4px' }}>
             <span className="flex items-center gap-2"><Users size={14} className="text-primary-500" /> {filteredPatients.length} Total</span>
             <span className="w-px h-3 bg-slate-200" />
             <span className="flex items-center gap-2"><UserCheck size={14} className="text-emerald-500" /> {PATIENTS.filter(p => p.status === 'Active').length} Active</span>
@@ -217,6 +218,7 @@ export default function PatientsPage({ onSelectPatient }) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="flex items-center gap-2 h-11 px-5 rounded-xl bg-white border border-slate-200 text-slate-600 text-[14px] font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm"
+            style={{ padding: '4px 6px' }}
           >
             <Download size={18} />
             Export
@@ -226,6 +228,7 @@ export default function PatientsPage({ onSelectPatient }) {
             whileHover={{ scale: 1.02, boxShadow: '0 8px 20px -6px rgba(13,148,136,0.3)' }}
             whileTap={{ scale: 0.98 }}
             className="flex items-center gap-2 h-11 px-5 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 text-white text-[14px] font-bold shadow-md hover:shadow-lg transition-all"
+            style={{ padding: '4px 6px' }}
           >
             <Plus size={18} strokeWidth={2.5} />
             Add Patient
@@ -236,7 +239,7 @@ export default function PatientsPage({ onSelectPatient }) {
       {/* ════════════════════════════════════════
           Filter Bar
          ════════════════════════════════════════ */}
-      <div className="flex flex-col md:flex-row items-center gap-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
+      <div className="flex flex-col md:flex-row items-center gap-4 p-6" style={{ paddingTop: '12px', paddingBottom: '12px', marginBottom: '4px' }}>
         {/* Search */}
         <div className="relative flex-1 w-full group">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
@@ -246,6 +249,7 @@ export default function PatientsPage({ onSelectPatient }) {
             value={searchQuery}
             onChange={(e) => handleSearch(e.target.value)}
             className="w-full h-11 pl-11 pr-4 rounded-xl border border-slate-200 bg-slate-50 text-[14px] text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-400 focus:bg-white transition-all duration-200 font-medium"
+            style={{ paddingLeft: '48px' }}
           />
         </div>
 
@@ -276,7 +280,7 @@ export default function PatientsPage({ onSelectPatient }) {
       <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           {/* Header */}
-          <div className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 px-8 py-5 border-b border-slate-100 bg-slate-50/50 min-w-[900px]">
+          <div className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 px-8 py-5 border-b border-slate-100 bg-slate-50/50 min-w-[900px]" style={{ paddingTop: '4px', paddingBottom: '4px', paddingLeft: '12px', paddingRight: '12px' }}>
             {['Patient Name', 'Contact', 'Age / Gender', 'Last Visit', 'Next Appt', 'Status', 'Balance', ''].map(
               (heading, i) => (
                 <span key={i} className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
@@ -310,9 +314,10 @@ export default function PatientsPage({ onSelectPatient }) {
                   variants={rowVariants}
                   onClick={() => onSelectPatient?.(patient.id)}
                   className="grid grid-cols-[2.2fr_1.6fr_0.8fr_1fr_1.1fr_1fr_0.8fr_48px] gap-4 items-center px-8 py-5 hover:bg-slate-50/80 transition-all duration-200 cursor-pointer group relative min-w-[900px]"
+                  style={{ paddingTop: '4px', paddingBottom: '4px' }}
                 >
                   {/* Name + Avatar */}
-                  <div className="flex items-center gap-4 min-w-0">
+                  <div className="flex items-center gap-4 min-w-0" style={{ paddingLeft: '12px' }}>
                     <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${avatarGradient(globalIndex)} flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300`}>
                       {getInitials(patient.name)}
                     </div>
@@ -368,7 +373,7 @@ export default function PatientsPage({ onSelectPatient }) {
                   </span>
 
                   {/* Action */}
-                  <div className="relative flex justify-end">
+                  <div className="relative flex justify-end" style={{ paddingRight: '12px' }}>
                     <button
                       onClick={(e) => { e.stopPropagation(); setOpenActionId(openActionId === patient.id ? null : patient.id); }}
                       className="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-white hover:shadow-sm hover:border-slate-200 text-slate-400 hover:text-slate-600 transition-all cursor-pointer"
@@ -395,7 +400,7 @@ export default function PatientsPage({ onSelectPatient }) {
 
           {/* Pagination */}
         </div>{/* end overflow-x-auto */}
-        <div className="flex items-center justify-between px-8 py-5 border-t border-slate-100 bg-slate-50/50">
+        <div className="flex items-center justify-between px-8 py-5 border-t border-slate-100 bg-slate-50/50" style={{ paddingTop: '4px', paddingBottom: '4px', paddingLeft: '12px', paddingRight: '12px' }}>
           <p className="text-sm font-medium text-slate-500">
             Showing <span className="font-bold text-slate-700">{(currentPage - 1) * ROWS_PER_PAGE + 1}-{Math.min(currentPage * ROWS_PER_PAGE, filteredPatients.length)}</span> of <span className="font-bold text-slate-700">{filteredPatients.length}</span>
           </p>

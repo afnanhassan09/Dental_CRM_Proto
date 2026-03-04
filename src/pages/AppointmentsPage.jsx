@@ -110,7 +110,7 @@ function MiniCalendar() {
   const totalDays = 31;
 
   return (
-    <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-lg shadow-slate-200/30">
+    <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-lg shadow-slate-200/30" style={{ padding: '12px' }}>
       {/* Month Header */}
       <div className="flex items-center justify-between mb-3">
         <h4 className="text-sm font-bold text-slate-800">January 2026</h4>
@@ -158,7 +158,7 @@ function MiniCalendar() {
    ══════════════════════════════════════════════ */
 function StatPill({ icon: Icon, label, value, color }) {
   return (
-    <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/80 shadow-sm">
+    <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/80 shadow-sm" style={{ padding: '2px 4px' }}>
       <div className={`w-7 h-7 rounded-lg ${color} flex items-center justify-center`}>
         <Icon size={14} className="text-white" />
       </div>
@@ -274,11 +274,11 @@ export default function AppointmentsPage() {
       className="h-full flex flex-col font-sans min-h-0"
     >
       {/* ═══════════ HEADER ═══════════ */}
-      <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-5 shrink-0">
+      <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-5 shrink-0" style={{ marginBottom: '10px' }}>
         <div>
           <div className="flex items-center gap-3 mb-1">
             <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Schedule</h1>
-            <span className="bg-gradient-to-r from-primary-500 to-primary-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-sm shadow-primary-500/20">
+            <span className="bg-gradient-to-r from-primary-500 to-primary-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-sm shadow-primary-500/20" style={{ padding: '2px 4px' }}>
               LIVE
             </span>
           </div>
@@ -294,7 +294,7 @@ export default function AppointmentsPage() {
           <StatPill icon={Clock} label="Next" value="15 min" color="bg-amber-500" />
 
           {/* View Toggle */}
-          <div className="flex bg-slate-100/80 backdrop-blur-sm p-1 rounded-xl border border-slate-200/50">
+          <div className="flex bg-slate-100/80 backdrop-blur-sm p-1 rounded-xl border border-slate-200/50" style={{ padding: '2px 4px' }}>
             {['Day', 'Week', 'Month'].map(v => (
               <button
                 key={v}
@@ -305,6 +305,7 @@ export default function AppointmentsPage() {
                     ? 'bg-white text-slate-800 shadow-md'
                     : 'text-slate-400 hover:text-slate-600'}
                 `}
+                style={{ padding: '2px 4px' }}
               >
                 {v}
               </button>
@@ -316,6 +317,7 @@ export default function AppointmentsPage() {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             className="h-10 px-5 flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow"
+            style={{ padding: '2px 4px' }}
           >
             <Plus size={16} strokeWidth={3} /> New Appt
           </motion.button>
@@ -330,11 +332,11 @@ export default function AppointmentsPage() {
           <MiniCalendar />
 
           {/* Filters */}
-          <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-lg shadow-slate-200/30">
-            <h4 className="text-xs font-bold text-slate-700 mb-3 flex items-center gap-2 uppercase tracking-wider">
+          <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-lg shadow-slate-200/30" style={{ padding: '6px' }}>
+            <h4 className="text-xs font-bold text-slate-700 mb-3 flex items-center gap-2 uppercase tracking-wider" style={{ marginBottom: '8px' }}>
               <Filter size={12} className="text-primary-500" /> Filters
             </h4>
-            <div className="space-y-2.5">
+            <div className="space-y-2.5" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {[
                 { label: 'Confirmed', color: 'bg-emerald-500', checked: true },
                 { label: 'Pending', color: 'bg-amber-400', checked: true },
@@ -349,14 +351,14 @@ export default function AppointmentsPage() {
           </div>
 
           {/* Waitlist */}
-          <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-lg shadow-slate-200/30 flex-1 flex flex-col min-h-0">
-            <div className="flex items-center justify-between mb-3">
+          <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-lg shadow-slate-200/30 flex-1 flex flex-col min-h-0" style={{ padding: '12px' }}>
+            <div className="flex items-center justify-between mb-3" style={{ marginBottom: '12px' }}>
               <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
                 <Zap size={12} className="text-amber-500" /> Waitlist
               </h4>
               <span className="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full">{WAITLIST.length}</span>
             </div>
-            <div className="space-y-2.5 overflow-y-auto flex-1 custom-scrollbar">
+            <div className="space-y-2.5 overflow-y-auto flex-1 custom-scrollbar" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {WAITLIST.map((p, i) => (
                 <motion.div
                   key={p.id}

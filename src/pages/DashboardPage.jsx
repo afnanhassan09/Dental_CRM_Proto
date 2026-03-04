@@ -189,13 +189,13 @@ export default function DashboardPage() {
               style={{ paddingLeft: '48px' }}
             />
           </div>
-          <nav className="flex items-center gap-2 text-sm text-slate-400 hidden lg:flex bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm">
+          <nav className="flex items-center gap-2 text-sm text-slate-400 hidden lg:flex bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm" style={{ padding: '2px 4px' }}>
             <span>🏠</span><span>/</span>
             <span className="text-slate-700 font-semibold">Dentist Admin</span>
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-xs font-semibold text-slate-500 bg-white px-3 py-2 rounded-xl border border-slate-100 shadow-sm tracking-wide">
+          <span className="text-xs font-semibold text-slate-500 bg-white px-3 py-2 rounded-xl border border-slate-100 shadow-sm tracking-wide" style={{ padding: '2px 4px' }}>
             📅 12 Dec – 13 Jan
           </span>
           <button className="relative w-11 h-11 rounded-full bg-white hover:bg-slate-50 border border-slate-100 flex items-center justify-center cursor-pointer transition-all shadow-sm hover:shadow-md group">
@@ -399,7 +399,7 @@ export default function DashboardPage() {
                     <p className="text-[14px] font-bold text-slate-700 truncate group-hover:text-slate-900">{appt.name}</p>
                     <p className="text-xs text-slate-500 font-medium">{appt.type}</p>
                   </div>
-                  <span className={`${appt.color} text-white text-[11px] font-bold px-3 py-1 rounded-full shrink-0 shadow-sm opacity-90 group-hover:opacity-100`}>
+                  <span className={`${appt.color} text-white text-[11px] font-bold px-3 py-1 rounded-full shrink-0 shadow-sm opacity-90 group-hover:opacity-100`} style={{ padding: '2px 4px' }}>
                     {appt.time}
                   </span>
                 </div>
@@ -413,7 +413,7 @@ export default function DashboardPage() {
             <div className="absolute bottom-6 right-6 w-24 h-24 bg-white/5 rounded-full blur-xl group-hover:bg-white/10 transition-colors duration-500" />
 
             <div className="relative z-10">
-              <div className="flex items-center gap-5 mb-6">
+              <div className="flex items-center gap-5 mb-6" style={{ marginBottom: '10px' }}>
                 <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-xl font-bold backdrop-blur-md border border-white/20 shadow-lg">
                   TW
                 </div>
@@ -422,7 +422,7 @@ export default function DashboardPage() {
                   <p className="text-primary-100 text-sm font-medium mt-0.5">Orthodontist</p>
                 </div>
               </div>
-              <div className="bg-white/10 rounded-2xl p-4 border border-white/5 backdrop-blur-md">
+              <div className="bg-white/10 rounded-2xl p-4 border border-white/5 backdrop-blur-md" style={{ padding: '6px' }}>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                     <Clock size={12} className="text-white" />
@@ -439,8 +439,8 @@ export default function DashboardPage() {
 
           {/* Overview */}
           <motion.div variants={fadeUp} className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow" style={{ padding: '10px' }}>
-            <h3 className="text-[15px] font-bold text-slate-800 mb-6 tracking-tight">Status Overview</h3>
-            <div className="space-y-6">
+            <h3 className="text-[15px] font-bold text-slate-800 mb-6 tracking-tight" style={{ marginBottom: '8px' }}>Status Overview</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {[
                 { label: 'Total Bookings', val: '482', bar: 75, barColor: 'bg-primary-500' },
                 { label: 'Completed', val: '367', bar: 60, barColor: 'bg-emerald-500' },

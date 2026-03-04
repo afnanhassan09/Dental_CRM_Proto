@@ -44,7 +44,7 @@ export default function Sidebar({ activePage, onNavigate }) {
      */
     <div className="flex flex-col h-full">
       {/* ── Logo ── */}
-      <div className="flex items-center gap-2.5 px-6 h-14 shrink-0 border-b border-gray-100" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
+      <div className="flex items-center gap-2.5 px-6 h-14 shrink-0 border-b border-gray-100" style={{ paddingLeft: '12px', paddingRight: '12px', marginBottom: '16px' }}>
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 text-white flex items-center justify-center">
           <ToothIcon size={18} />
         </div>
@@ -52,7 +52,7 @@ export default function Sidebar({ activePage, onNavigate }) {
       </div>
 
       {/* ── User Profile ── */}
-      <div className="flex flex-col items-center py-5 px-6 border-b border-gray-100 shrink-0" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
+      <div className="flex flex-col items-center py-5 px-6 border-b border-gray-100 shrink-0" style={{ paddingLeft: '12px', paddingRight: '12px', paddingBottom: '24px', marginBottom: '12px' }}>
         <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 flex items-center justify-center text-white text-lg font-bold mb-2 shadow-md">
           BH
         </div>
@@ -78,6 +78,7 @@ export default function Sidebar({ activePage, onNavigate }) {
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                 }
               `}
+              style={{ paddingLeft: '10px' }}
             >
               {isActive && (
                 <motion.div
@@ -96,12 +97,12 @@ export default function Sidebar({ activePage, onNavigate }) {
       </nav>
 
       {/* ── Emergency Contact ── */}
-      <div className="mt-auto px-6 pb-6 shrink-0" style={{ paddingLeft: '12px', paddingRight: '12px' }}>
+      <div className="mt-auto px-6 pb-6 shrink-0" style={{ paddingLeft: '12px', paddingRight: '12px', paddingBottom: '6px' }}>
         <button className="flex items-center justify-center gap-2.5 w-full h-11 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 text-white text-[13px] font-bold shadow-lg shadow-primary-500/20 hover:shadow-primary-500/30 hover:scale-[1.02] transition-all duration-200 cursor-pointer">
           <PhoneCall size={16} />
           <span>Emergency Contact</span>
         </button>
-        <p className="text-center text-[11px] text-slate-400 mt-2 font-medium tracking-wide">24/7 Support Line</p>
+        <p className="text-center text-[11px] text-slate-400 mt-2 font-medium tracking-wide" style={{ marginTop: '4px' }}>24/7 Support Line</p>
       </div>
     </div>
   );
