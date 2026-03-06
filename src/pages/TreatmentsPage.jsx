@@ -79,6 +79,7 @@ function ProcedureCard({ proc, onAdd, inCart }) {
           ? 'border-primary-300 shadow-md shadow-primary-100/50'
           : 'border-slate-100 hover:border-primary-400 hover:shadow-lg shadow-sm'}
       `}
+      style={{ padding: '6px' }}
       onClick={() => onAdd(proc)}
     >
       {/* Added badge */}
@@ -239,7 +240,7 @@ export default function TreatmentsPage() {
       className="h-full flex flex-col font-sans min-h-0"
     >
       {/* ═══════════ HEADER ═══════════ */}
-      <header className="flex items-end justify-between mb-6 shrink-0">
+      <header className="flex items-end justify-between mb-6 shrink-0" style={{ marginBottom: '16px' }}>
         <div>
           <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Treatments & Billing</h1>
           <p className="text-sm font-medium text-slate-400 mt-1 flex items-center gap-2">
@@ -258,7 +259,7 @@ export default function TreatmentsPage() {
         <section className="flex-[3] flex flex-col min-w-0 min-h-0 xl:min-h-0">
 
           {/* Search */}
-          <div className="relative mb-4">
+          <div className="relative mb-4" style={{ marginBottom: '12px' }}>
             <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
@@ -266,11 +267,12 @@ export default function TreatmentsPage() {
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search Root Canal, Whitening, D2740..."
               className="w-full h-11 pl-11 pr-4 bg-white/70 backdrop-blur-xl border-2 border-slate-100 rounded-2xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-100 transition-all font-medium"
+              style={{ paddingLeft: '12px' }}
             />
           </div>
 
           {/* Category Chips */}
-          <div className="flex gap-2 mb-5 flex-wrap">
+          <div className="flex gap-2 mb-5 flex-wrap" style={{ marginBottom: '16px' }}>
             {CATEGORIES.map(cat => {
               const isActive = activeCat === cat;
               const colors = CAT_COLORS[cat];
@@ -284,6 +286,7 @@ export default function TreatmentsPage() {
                       ? `${colors.active} shadow-md`
                       : `${colors.bg} ${colors.text} hover:shadow-sm`}
                   `}
+                  style={{ padding: '4px 6px' }}
                 >
                   {cat}
                   {cat !== 'All' && (
@@ -325,7 +328,7 @@ export default function TreatmentsPage() {
              RIGHT: INVOICE (40%)
            ───────────────────────────────────── */}
         <aside className="flex-[2] flex flex-col min-w-0 xl:min-w-[340px] xl:max-w-[480px]">
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col h-full relative overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col h-full relative overflow-hidden" style={{ padding: '12px' }}>
             {/* Paper texture */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsbD0idHJhbnNwYXJlbnQiLz4KPHBhdGggZD0iTTAgMzBoNjAiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==')] opacity-50 pointer-events-none" />
 
