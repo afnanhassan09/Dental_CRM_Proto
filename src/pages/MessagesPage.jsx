@@ -178,6 +178,7 @@ function ConvoItem({ convo, isActive, onClick }) {
           ? 'bg-primary-50 border border-primary-100 shadow-sm'
           : 'hover:bg-slate-50 border border-transparent'}
       `}
+      style={{ padding: '8px 12px' }}
     >
       {/* Avatar */}
       <div className="relative shrink-0">
@@ -221,7 +222,8 @@ function Bubble({ msg, index }) {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.04, duration: 0.3 }}
-      className={`flex ${isClinic ? 'justify-end' : 'justify-start'} mb-3`}
+      className={`flex ${isClinic ? 'justify-end' : 'justify-start'} mb-5`}
+      style={{ marginBottom: '8px' }}
     >
       <div
         className={`
@@ -230,6 +232,7 @@ function Bubble({ msg, index }) {
             ? 'bg-gradient-to-br from-primary-600 to-primary-500 text-white rounded-2xl rounded-br-md shadow-md shadow-primary-500/15'
             : 'bg-white text-slate-700 rounded-2xl rounded-bl-md shadow-sm border border-slate-100'}
         `}
+        style={{ padding: '8px 12px' }}
       >
         <p className="whitespace-pre-line">{msg.text}</p>
         <div className={`flex items-center gap-1 mt-1.5 ${isClinic ? 'justify-end' : ''}`}>
@@ -291,11 +294,12 @@ export default function MessagesPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="h-full flex font-sans rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-xl"
+      style={{ padding: '12px' }}
     >
       {/* ═══════════════════════════════════
            LEFT: INBOX LIST (25%)
          ═══════════════════════════════════ */}
-      <aside className="w-[280px] shrink-0 border-r border-slate-100 flex-col bg-slate-50/50 hidden lg:flex">
+      <aside className="w-[280px] shrink-0 border-r border-slate-100 flex-col bg-slate-50/50 hidden lg:flex" style={{ paddingRight: '12px' }}>
         {/* Header */}
         <div className="p-4 pb-3 shrink-0">
           <div className="flex items-center justify-between mb-4">
@@ -311,25 +315,26 @@ export default function MessagesPage() {
           </div>
 
           {/* Search */}
-          <div className="relative mb-3">
+          <div className="relative mb-3" style={{ marginBottom: '16px' }}>
             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search conversations..."
               className="w-full h-9 pl-9 pr-3 bg-white rounded-xl border border-slate-200 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
+              style={{ paddingLeft: '36px' }}
             />
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex gap-1 bg-white p-1 rounded-xl border border-slate-100">
+          <div className="flex gap-1 bg-white p-1 rounded-xl border border-slate-100" style={{ marginBottom: '8px' }}>
             {['all', 'unread', 'urgent'].map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
                 className={`flex-1 py-1.5 rounded-lg text-[11px] font-bold capitalize transition-all ${filter === f
-                    ? 'bg-slate-800 text-white shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
+                  ? 'bg-slate-800 text-white shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700'
                   }`}
               >
                 {f}
@@ -339,7 +344,7 @@ export default function MessagesPage() {
         </div>
 
         {/* Conversation List */}
-        <div className="flex-1 overflow-y-auto px-2 py-1 space-y-0.5 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1 custom-scrollbar">
           {filteredConvos.map(c => (
             <ConvoItem
               key={c.id}
@@ -360,7 +365,7 @@ export default function MessagesPage() {
       {/* ═══════════════════════════════════
            CENTER: CHAT WINDOW (50%)
          ═══════════════════════════════════ */}
-      <section className="flex-1 flex flex-col min-w-0 bg-white">
+      <section className="flex-1 flex flex-col min-w-0 bg-white" style={{ paddingLeft: '16px', paddingRight: '16px' }}>
         {/* Chat Header */}
         <div className="h-16 shrink-0 flex items-center justify-between px-5 border-b border-slate-100 bg-white">
           <div className="flex items-center gap-3">
@@ -391,8 +396,8 @@ export default function MessagesPage() {
         {/* Messages Area */}
         <div className="flex-1 overflow-y-auto px-5 py-4 bg-slate-50/30 custom-scrollbar">
           {/* Date Separator */}
-          <div className="flex items-center justify-center mb-5">
-            <span className="text-[10px] font-bold text-slate-400 bg-white px-3 py-1 rounded-full border border-slate-100 shadow-sm">Today</span>
+          <div className="flex items-center justify-center mb-5" style={{ margin: '8px 0' }}>
+            <span className="text-[10px] font-bold text-slate-400 bg-white px-3 py-1 rounded-full border border-slate-100 shadow-sm" style={{ padding: '2px 8px' }}>Today</span>
           </div>
 
           <AnimatePresence>
@@ -404,12 +409,13 @@ export default function MessagesPage() {
         </div>
 
         {/* Quick Replies */}
-        <div className="px-5 pt-3 flex gap-2 flex-wrap shrink-0">
+        <div className="px-5 pt-3 flex gap-2 flex-wrap shrink-0" style={{ marginBottom: '12px' }}>
           {QUICK_REPLIES.map(qr => (
             <button
               key={qr.label}
               onClick={() => setInputText(qr.text)}
               className="px-3 py-1.5 bg-slate-100 hover:bg-primary-50 hover:text-primary-700 text-slate-600 rounded-full text-[11px] font-bold border border-slate-200 hover:border-primary-200 transition-all"
+              style={{ padding: '3px 4px' }}
             >
               {qr.label}
             </button>
@@ -418,7 +424,7 @@ export default function MessagesPage() {
 
         {/* Input Area */}
         <div className="p-4 shrink-0">
-          <div className="flex items-end gap-2 bg-slate-50 rounded-2xl border border-slate-200 p-2 focus-within:border-primary-300 focus-within:ring-2 focus-within:ring-primary-100 transition-all">
+          <div className="flex items-center gap-2 bg-slate-50 rounded-2xl border border-slate-200 p-2 focus-within:border-primary-300 focus-within:ring-2 focus-within:ring-primary-100 transition-all">
             <button className="w-9 h-9 rounded-xl hover:bg-slate-100 flex items-center justify-center text-slate-400 transition-colors shrink-0">
               <Paperclip size={16} />
             </button>
@@ -442,8 +448,8 @@ export default function MessagesPage() {
               onClick={handleSend}
               disabled={!inputText.trim()}
               className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${inputText.trim()
-                  ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-md shadow-primary-500/25'
-                  : 'bg-slate-100 text-slate-300'
+                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-md shadow-primary-500/25'
+                : 'bg-slate-100 text-slate-300'
                 }`}
             >
               <Send size={15} />
@@ -455,17 +461,17 @@ export default function MessagesPage() {
       {/* ═══════════════════════════════════
            RIGHT: CONTEXT PANEL (25%)
          ═══════════════════════════════════ */}
-      <aside className="w-[280px] shrink-0 border-l border-slate-100 flex-col bg-slate-50/30 overflow-y-auto custom-scrollbar hidden xl:flex">
+      <aside className="w-[280px] shrink-0 border-l border-slate-100 flex-col bg-slate-50/30 overflow-y-auto custom-scrollbar hidden xl:flex" style={{ paddingLeft: '16px', paddingRight: '16px' }}>
         {/* Patient Mini Profile */}
         <div className="p-5 pb-4 text-center border-b border-slate-100">
-          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${convo?.gradient} flex items-center justify-center text-white text-xl font-bold shadow-lg mx-auto mb-3`}>
+          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${convo?.gradient} flex items-center justify-center text-white text-xl font-bold shadow-lg mx-auto`} style={{ marginBottom: '4px' }}>
             {convo?.avatar}
           </div>
-          <h3 className="text-[15px] font-extrabold text-slate-800">{context.name}</h3>
-          <p className="text-[11px] text-slate-400 font-medium mt-0.5">{context.age} years • {context.phone}</p>
-          <div className="flex justify-center gap-1.5 mt-3">
+          <h3 className="text-[15px] font-extrabold text-slate-800" style={{ marginBottom: '2px' }}>{context.name}</h3>
+          <p className="text-[11px] text-slate-400 font-medium" style={{ marginBottom: '2px' }}>{context.age} years • {context.phone}</p>
+          <div className="flex justify-center gap-1.5" style={{ marginBottom: '8px' }}>
             {context.tags.map(tag => (
-              <span key={tag} className="px-2.5 py-0.5 bg-primary-50 text-primary-700 text-[10px] font-bold rounded-full border border-primary-100">
+              <span key={tag} className="px-2.5 py-0.5 bg-primary-50 text-primary-700 text-[10px] font-bold rounded-full border border-primary-100" style={{ padding: '2px 4px' }}>
                 {tag}
               </span>
             ))}
@@ -473,9 +479,9 @@ export default function MessagesPage() {
         </div>
 
         {/* Info Cards */}
-        <div className="p-4 space-y-3 flex-1">
+        <div className="p-4 space-y-3 flex-1" style={{ paddingBottom: '24px' }}>
           {/* Next Appointment */}
-          <div className="bg-white rounded-xl p-3.5 border border-slate-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+          <div className="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow cursor-pointer group" style={{ padding: '8px 12px', marginBottom: '12px' }}>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-7 h-7 rounded-lg bg-primary-50 flex items-center justify-center text-primary-600">
                 <Calendar size={14} />
@@ -487,7 +493,7 @@ export default function MessagesPage() {
           </div>
 
           {/* Last Treatment */}
-          <div className="bg-white rounded-xl p-3.5 border border-slate-100 shadow-sm">
+          <div className="bg-white rounded-xl border border-slate-100 shadow-sm" style={{ padding: '8px 12px', marginBottom: '12px' }}>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
                 <Stethoscope size={14} />
@@ -499,7 +505,7 @@ export default function MessagesPage() {
           </div>
 
           {/* Insurance & Balance */}
-          <div className="bg-white rounded-xl p-3.5 border border-slate-100 shadow-sm">
+          <div className="bg-white rounded-xl border border-slate-100 shadow-sm" style={{ padding: '8px 12px', marginBottom: '12px' }}>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
                 <FileText size={14} />
@@ -516,8 +522,8 @@ export default function MessagesPage() {
           </div>
 
           {/* Staff Notes */}
-          <div className="bg-white rounded-xl p-3.5 border border-slate-100 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
+          <div className="bg-white rounded-xl border border-slate-100 shadow-sm" style={{ padding: '8px 12px', marginBottom: '12px' }}>
+            <div className="flex items-center gap-2 mb-2" style={{ marginBottom: '8px' }}>
               <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600">
                 <Star size={14} />
               </div>
@@ -526,14 +532,20 @@ export default function MessagesPage() {
             <textarea
               defaultValue={context.notes}
               placeholder="Add internal notes..."
-              className="w-full text-[12px] text-slate-700 bg-slate-50 rounded-lg border border-slate-100 p-2.5 resize-none h-20 focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-300 transition-all placeholder-slate-400 leading-relaxed"
+              className="w-full text-[12px] text-slate-700 bg-slate-50 rounded-lg border border-slate-100 resize-none h-20 focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-300 transition-all placeholder-slate-400 leading-relaxed"
+              style={{ padding: '6px 8px' }}
             />
           </div>
 
           {/* View Full Profile Button */}
-          <button className="w-full py-2.5 rounded-xl border border-slate-200 text-slate-500 text-[11px] font-bold hover:bg-white hover:border-primary-200 hover:text-primary-600 transition-all flex items-center justify-center gap-1.5">
-            View Full Profile <ArrowRight size={12} />
-          </button>
+          <div className="flex justify-center mt-2">
+            <button
+              className="rounded-xl border border-slate-200 text-slate-500 text-[11px] font-bold hover:bg-white hover:border-primary-200 hover:text-primary-600 transition-all flex items-center justify-center gap-1.5"
+              style={{ padding: '8px 16px' }}
+            >
+              View Full Profile <ArrowRight size={12} />
+            </button>
+          </div>
         </div>
       </aside>
     </motion.div>

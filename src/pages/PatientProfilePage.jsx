@@ -334,7 +334,7 @@ export default function PatientProfilePage() {
       className="space-y-8 max-w-[1600px] mx-auto font-sans pb-10"
     >
       {/* ── Header Card ── */}
-      <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 relative overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden" style={{ padding: '8px 16px' }}>
         {/* Background Accents */}
         <div className="absolute top-0 right-0 w-96 h-full bg-gradient-to-l from-primary-50/40 to-transparent -z-0 pointer-events-none" />
         <div className="absolute -bottom-10 right-20 w-64 h-64 bg-slate-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
@@ -381,7 +381,7 @@ export default function PatientProfilePage() {
               { label: 'Next Appt', val: PATIENT_DATA.nextAppt, highlight: true, icon: Clock },
               { label: 'Balance', val: `$${PATIENT_DATA.balance}`, icon: FileText }
             ].map((stat, i) => (
-              <div key={i} className="flex-1 min-w-[140px] xl:w-44 bg-slate-50 rounded-2xl p-4 border border-slate-200/60 text-center hover:bg-white hover:shadow-md transition-all group">
+              <div key={i} className="flex-1 min-w-[140px] xl:w-44 bg-slate-50 rounded-2xl border border-slate-200/60 text-center hover:bg-white hover:shadow-md transition-all group" style={{ padding: '16px 24px' }}>
                 <div className="flex justify-center mb-2 text-slate-400 group-hover:text-primary-500 transition-colors"><stat.icon size={20} /></div>
                 <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-1">{stat.label}</p>
                 <p className={`text-[17px] font-bold ${stat.highlight ? 'text-primary-600' : 'text-slate-700'}`}>{stat.val}</p>

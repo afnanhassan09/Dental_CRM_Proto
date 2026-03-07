@@ -334,7 +334,7 @@ export default function TreatmentsPage() {
 
             {/* Invoice Header */}
             <div className="relative z-10 px-6 pt-6 pb-4 border-b border-slate-100">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-4" style={{ marginBottom: '6px' }}>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-md">
                     <FileText size={16} className="text-white" />
@@ -465,6 +465,7 @@ export default function TreatmentsPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="h-12 px-4 flex items-center justify-center gap-2 border-2 border-slate-200 text-slate-600 rounded-xl text-sm font-bold hover:bg-slate-50 hover:border-slate-300 transition-all"
+                  style={{ padding: '4px 6px' }}
                 >
                   <Printer size={16} /> Print
                 </motion.button>
