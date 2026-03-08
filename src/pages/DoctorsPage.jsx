@@ -148,7 +148,8 @@ function StatCard({ icon: Icon, label, value, sub, color, iconBg }) {
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex items-center gap-4 hover:shadow-md transition-shadow"
+      className="bg-white rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow"
+      style={{ padding: '6px 8px' }}
     >
       <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center shadow-sm`}>
         <Icon size={20} className={color} />
@@ -176,16 +177,19 @@ function DoctorCard({ doctor, onClick, index }) {
       whileHover={{ y: -4 }}
       onClick={onClick}
       className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden group"
+      style={{ padding: '8px' }}
     >
       {/* Gradient Banner */}
-      <div className={`h-20 bg-gradient-to-r ${doctor.gradient} relative`}>
+      <div className={`h-20 bg-gradient-to-r ${doctor.gradient} relative rounded-xl overflow-hidden`}>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=')] opacity-40" />
         {/* Status Dot */}
         <div className="absolute top-3 right-3">
-          <span className={`flex items-center gap-1.5 text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm ${doctor.status === 'online'
-              ? 'bg-white/20 text-white'
-              : 'bg-black/20 text-white/70'
-            }`}>
+          <span className={`flex items-center gap-1.5 text-[10px] font-bold rounded-full backdrop-blur-sm ${doctor.status === 'online'
+            ? 'bg-white/20 text-white'
+            : 'bg-black/20 text-white/70'
+            }`}
+            style={{ padding: '2px 4px' }}
+          >
             <span className={`w-1.5 h-1.5 rounded-full ${doctor.status === 'online' ? 'bg-emerald-400 animate-pulse' : 'bg-white/40'}`} />
             {doctor.status === 'online' ? 'Active' : 'Away'}
           </span>
@@ -193,7 +197,7 @@ function DoctorCard({ doctor, onClick, index }) {
       </div>
 
       {/* Avatar */}
-      <div className="flex justify-center -mt-9 relative z-10">
+      <div className="flex justify-center -mt-9 relative z-10" style={{ marginBottom: '12px' }}>
         <div className={`w-[70px] h-[70px] rounded-2xl bg-gradient-to-br ${doctor.gradient} flex items-center justify-center text-white text-xl font-bold shadow-xl ring-4 ring-white group-hover:scale-105 transition-transform`}>
           {doctor.avatar}
         </div>
@@ -201,15 +205,17 @@ function DoctorCard({ doctor, onClick, index }) {
 
       {/* Info */}
       <div className="text-center px-4 pt-3 pb-2">
-        <h3 className="text-[15px] font-extrabold text-slate-800">{doctor.name}</h3>
-        <span className="inline-block mt-1 px-3 py-0.5 bg-primary-50 text-primary-700 text-[10px] font-bold rounded-full border border-primary-100">
-          {doctor.role}
-        </span>
-        <p className="text-[11px] text-slate-400 font-medium mt-1.5">{doctor.experience} Years Experience</p>
+        <h3 className="text-[15px] font-extrabold text-slate-800" style={{ marginBottom: '1px' }}>{doctor.name}</h3>
+        <div style={{ marginBottom: '4px' }}>
+          <span className="inline-block px-3 py-0.5 bg-primary-50 text-primary-700 text-[10px] font-bold rounded-full border border-primary-100">
+            {doctor.role}
+          </span>
+        </div>
+        <p className="text-[11px] text-slate-400 font-medium" style={{ marginBottom: '4px' }}>{doctor.experience} Years Experience</p>
       </div>
 
       {/* Mini Stats */}
-      <div className="grid grid-cols-3 border-t border-slate-50 mx-4 mt-2 py-3">
+      <div className="grid grid-cols-3 border-t border-slate-50 mx-4 mt-2 py-3" style={{ marginBottom: '8px' }}>
         {[
           { icon: Star, value: doctor.rating, label: 'Rating', color: 'text-amber-500' },
           { icon: Users, value: doctor.totalPatients >= 1000 ? `${(doctor.totalPatients / 1000).toFixed(1)}k` : doctor.totalPatients, label: 'Patients', color: 'text-blue-500' },
@@ -417,19 +423,19 @@ export default function DoctorsPage() {
       <div className="flex items-end justify-between mb-6">
         <div>
           <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Medical Team</h1>
-          <p className="text-sm text-slate-400 font-medium mt-1">Performance overview & team management</p>
+          <p className="text-sm text-slate-400 font-medium mt-1" style={{ marginBottom: '8px' }}>Performance overview & team management</p>
         </div>
       </div>
 
       {/* Stats Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ marginBottom: '10px' }}>
         <StatCard icon={Stethoscope} label="Total Doctors" value={DOCTORS.length} sub="+2 this month" color="text-primary-600" iconBg="bg-primary-50" />
         <StatCard icon={Activity} label="Active Now" value={activeCount} sub="Online" color="text-emerald-600" iconBg="bg-emerald-50" />
         <StatCard icon={UserCheck} label="Patients Today" value={totalToday} sub="+12% vs avg" color="text-blue-600" iconBg="bg-blue-50" />
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-col md:flex-row gap-3 mb-6">
+      <div className="flex flex-col md:flex-row gap-3" style={{ marginBottom: '8px' }}>
         <div className="relative flex-1 max-w-md">
           <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
@@ -437,6 +443,7 @@ export default function DoctorsPage() {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name or role..."
             className="w-full h-10 pl-10 pr-4 bg-white rounded-xl border-2 border-slate-100 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-50 transition-all font-medium"
+            style={{ paddingLeft: '40px' }}
           />
         </div>
         <div className="flex gap-1.5 flex-wrap overflow-x-auto">
@@ -444,10 +451,11 @@ export default function DoctorsPage() {
             <button
               key={r}
               onClick={() => setRoleFilter(r)}
-              className={`px-3.5 py-2 rounded-xl text-[11px] font-bold transition-all ${roleFilter === r
-                  ? 'bg-slate-800 text-white shadow-md'
-                  : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-300'
+              className={`rounded-xl text-[11px] font-bold transition-all ${roleFilter === r
+                ? 'bg-slate-800 text-white shadow-md border border-slate-800'
+                : 'bg-white text-slate-500 border border-slate-200 hover:border-slate-300'
                 }`}
+              style={{ padding: '4px 10px' }}
             >
               {r}
             </button>

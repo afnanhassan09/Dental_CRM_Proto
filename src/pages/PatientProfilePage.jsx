@@ -159,7 +159,7 @@ function Odontogram() {
   const lowerArch = TEETH_DATA.slice(16, 32).reverse();
 
   return (
-    <div className="bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-800 relative overflow-hidden h-full flex flex-col">
+    <div className="bg-slate-900 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden h-full flex flex-col" style={{ padding: '16px 24px' }}>
       {/* Background Grid & Gradient */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/50" />
@@ -220,25 +220,27 @@ function ClinicalDashboard() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       {/* 1. X-Rays & Media */}
-      <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
-        <div className="flex justify-between items-center mb-5">
+      <div className="bg-white rounded-3xl shadow-sm border border-slate-100 flex flex-col" style={{ padding: '12px 16px' }}>
+        <div className="flex justify-between items-center" style={{ marginBottom: '16px' }}>
           <h3 className="text-[15px] font-bold text-slate-800">Recent Scans</h3>
-          <button className="text-xs bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5">
-            <UploadCloud size={14} /> Upload
+          <button className="bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold rounded-lg transition-colors flex items-center gap-1.5" style={{ padding: '2px 4px', fontSize: '13px' }}>
+            <UploadCloud size={16} /> Upload
           </button>
         </div>
         <div className="grid grid-cols-2 gap-3 flex-1">
           {scans.map(scan => (
-            <div key={scan.id} className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-slate-100 border border-slate-200">
-              <div className={`absolute inset-0 ${scan.thumb} opacity-80 group-hover:scale-110 transition-transform duration-500`} />
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
-                  <ArrowRight size={16} />
+            <div key={scan.id} className="group relative aspect-square rounded-xl cursor-pointer bg-slate-50 border border-slate-200" style={{ padding: '4px' }}>
+              <div className="relative w-full h-full rounded-lg overflow-hidden bg-slate-100">
+                <div className={`absolute inset-0 ${scan.thumb} opacity-80 group-hover:scale-110 transition-transform duration-500`} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                    <ArrowRight size={16} />
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
-                <p className="text-[11px] font-bold text-white">{scan.type}</p>
-                <p className="text-[9px] text-white/80">{scan.date}</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent" style={{ padding: '8px 12px', paddingTop: '24px' }}>
+                  <p className="text-[12px] font-bold text-white mb-0.5">{scan.type}</p>
+                  <p className="text-[10px] text-white/80">{scan.date}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -246,12 +248,12 @@ function ClinicalDashboard() {
       </div>
 
       {/* 2. Insurance */}
-      <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 relative overflow-hidden group">
+      <div className="bg-white rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden group" style={{ padding: '12px 16px' }}>
         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full opacity-50 transition-transform group-hover:scale-110 duration-700" />
 
-        <div className="flex justify-between items-start mb-6 relative z-10">
+        <div className="flex justify-between items-start relative z-10" style={{ marginBottom: '16px' }}>
           <h3 className="text-[15px] font-bold text-slate-800">Insurance</h3>
-          <span className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full text-[11px] font-bold border border-emerald-100">
+          <span className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 rounded-full text-[11px] font-bold border border-emerald-100" style={{ padding: '2px 4px' }}>
             <ShieldCheck size={12} /> Active
           </span>
         </div>
@@ -286,8 +288,8 @@ function ClinicalDashboard() {
       </div>
 
       {/* 3. Prescriptions */}
-      <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
-        <div className="flex justify-between items-center mb-5">
+      <div className="bg-white rounded-3xl shadow-sm border border-slate-100 flex flex-col" style={{ padding: '12px 16px' }}>
+        <div className="flex justify-between items-center" style={{ marginBottom: '16px' }}>
           <h3 className="text-[15px] font-bold text-slate-800">Active Scripts</h3>
           <button className="text-slate-400 hover:text-primary-600 transition-colors">
             <Plus size={20} />
@@ -296,7 +298,7 @@ function ClinicalDashboard() {
 
         <div className="space-y-3 mb-6 flex-1">
           {medications.map((med, i) => (
-            <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100" style={{ marginBottom: '8px' }}>
               <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm text-primary-500 shrink-0">
                 <Pill size={18} />
               </div>
@@ -311,9 +313,10 @@ function ClinicalDashboard() {
         <div className="relative">
           <textarea
             placeholder="Add a quick note..."
-            className="w-full h-20 bg-slate-50 rounded-xl border border-slate-200 p-3 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-300 resize-none transition-all"
+            className="w-full h-[88px] bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-100 focus:border-primary-300 resize-none transition-all"
+            style={{ padding: '8px 12px' }}
           />
-          <button className="absolute bottom-2 right-2 text-xs bg-white text-slate-500 shadow-sm border border-slate-200 px-2 py-1 rounded-md font-bold hover:text-primary-600">
+          <button className="absolute bottom-3 right-3 text-xs bg-white text-slate-500 shadow-sm border border-slate-200 rounded-md font-bold hover:text-primary-600 transition-colors" style={{ padding: '2px 4px' }}>
             Save
           </button>
         </div>
@@ -334,7 +337,7 @@ export default function PatientProfilePage() {
       className="space-y-8 max-w-[1600px] mx-auto font-sans pb-10"
     >
       {/* ── Header Card ── */}
-      <div className="bg-white rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden" style={{ padding: '8px 16px' }}>
+      <div className="bg-white rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden" style={{ padding: '20px 20px', marginBottom: '24px' }}>
         {/* Background Accents */}
         <div className="absolute top-0 right-0 w-96 h-full bg-gradient-to-l from-primary-50/40 to-transparent -z-0 pointer-events-none" />
         <div className="absolute -bottom-10 right-20 w-64 h-64 bg-slate-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
@@ -351,21 +354,23 @@ export default function PatientProfilePage() {
             <div className="pt-1">
               <div className="flex items-center gap-3 mb-2">
                 <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{PATIENT_DATA.name}</h1>
-                <span className="bg-primary-50 text-primary-700 text-[11px] font-bold px-2.5 py-1 rounded-lg uppercase tracking-wider border border-primary-100">
+                <span className="bg-primary-50 text-primary-700 text-[11px] font-bold rounded-lg uppercase tracking-wider border border-primary-100" style={{ padding: '2px 4px' }}>
                   {PATIENT_DATA.id}
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-slate-500 font-medium mb-5">
+              <div className="flex flex-wrap gap-x-6 gap-y-3 text-[13px] text-slate-500 font-medium" style={{ marginBottom: '6px' }}>
                 <span className="flex items-center gap-2"><Calendar size={15} className="text-slate-400" /> {PATIENT_DATA.age} Years</span>
                 <span className="flex items-center gap-2"><User size={15} className="text-slate-400" /> {PATIENT_DATA.gender}</span>
                 <span className="flex items-center gap-2"><Phone size={15} className="text-slate-400" /> {PATIENT_DATA.phone}</span>
-                <span className="flex items-center gap-2"><MapPin size={15} className="text-slate-400" /> {PATIENT_DATA.address}</span>
+              </div>
+              <div className="flex items-center gap-2 text-[13px] text-slate-500 font-medium" style={{ marginBottom: '6px' }}>
+                <MapPin size={15} className="text-slate-400" /> {PATIENT_DATA.address}
               </div>
 
               <div className="flex gap-2.5">
                 {PATIENT_DATA.alerts.map(alert => (
-                  <span key={alert} className="inline-flex items-center gap-1.5 bg-red-50 text-red-600 px-3 py-1 rounded-full text-[11px] font-bold border border-red-100 shadow-sm">
+                  <span key={alert} className="inline-flex items-center gap-1.5 bg-red-50 text-red-600 rounded-full text-[11px] font-bold border border-red-100 shadow-sm" style={{ padding: '2px 4px' }}>
                     <AlertCircle size={12} strokeWidth={2.5} />
                     {alert}
                   </span>
@@ -381,7 +386,7 @@ export default function PatientProfilePage() {
               { label: 'Next Appt', val: PATIENT_DATA.nextAppt, highlight: true, icon: Clock },
               { label: 'Balance', val: `$${PATIENT_DATA.balance}`, icon: FileText }
             ].map((stat, i) => (
-              <div key={i} className="flex-1 min-w-[140px] xl:w-44 bg-slate-50 rounded-2xl border border-slate-200/60 text-center hover:bg-white hover:shadow-md transition-all group" style={{ padding: '16px 24px' }}>
+              <div key={i} className="flex-1 min-w-[140px] xl:w-44 bg-slate-50 rounded-2xl border border-slate-200/60 text-center hover:bg-white hover:shadow-md transition-all group" style={{ padding: '16px 12px' }}>
                 <div className="flex justify-center mb-2 text-slate-400 group-hover:text-primary-500 transition-colors"><stat.icon size={20} /></div>
                 <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-1">{stat.label}</p>
                 <p className={`text-[17px] font-bold ${stat.highlight ? 'text-primary-600' : 'text-slate-700'}`}>{stat.val}</p>
@@ -392,7 +397,7 @@ export default function PatientProfilePage() {
       </div>
 
       {/* ── Main Grid ── */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8" style={{ marginBottom: '24px' }}>
 
         {/* Left Col: Odontogram (2/3 width on large screens) */}
         <div className="xl:col-span-2 min-h-[480px] xl:h-[540px]">
@@ -400,15 +405,15 @@ export default function PatientProfilePage() {
         </div>
 
         {/* Right Col: Timeline (1/3 width) */}
-        <div className="xl:col-span-1 h-[540px] bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col">
-          <h3 className="text-[16px] font-bold text-slate-800 mb-6 flex items-center gap-2.5">
+        <div className="xl:col-span-1 h-[540px] bg-white rounded-3xl shadow-sm border border-slate-100 flex flex-col" style={{ padding: '16px 16px' }}>
+          <h3 className="text-[16px] font-bold text-slate-800 flex items-center gap-2.5" style={{ marginBottom: '8px' }}>
             <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center text-primary-600">
               <Activity size={18} />
             </div>
             Treatment History
           </h3>
 
-          <div className="relative pl-3 space-y-7 overflow-y-auto flex-1 pr-2 custom-scrollbar">
+          <div className="relative space-y-7 overflow-y-auto flex-1 pr-2 custom-scrollbar">
             {/* Timeline Line */}
             <div className="absolute left-[23px] top-2 bottom-0 w-[2px] bg-slate-100" />
 
@@ -418,12 +423,10 @@ export default function PatientProfilePage() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="relative pl-12 group"
+                className="relative flex items-start gap-4 group"
               >
                 {/* Timeline Dot */}
-                <div className={`
-                   absolute left-0 top-1 w-12 h-12 flex items-center justify-center translate-x-[-50%] z-10
-                `}>
+                <div className="w-12 flex-shrink-0 flex justify-center mt-2 z-10">
                   <div className={`
                      w-9 h-9 rounded-full border-[3px] border-white flex items-center justify-center shadow-sm
                      ${item.type === 'surgery' ? 'bg-rose-100 text-rose-600' :
@@ -438,7 +441,7 @@ export default function PatientProfilePage() {
                   </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:bg-white hover:shadow-md transition-all cursor-pointer group-hover:border-primary-100">
+                <div className="flex-1 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-md transition-all cursor-pointer group-hover:border-primary-100" style={{ padding: '16px 24px', marginBottom: '8px' }}>
                   <div className="flex justify-between items-start mb-1">
                     <h4 className="text-[13px] font-bold text-slate-800">{item.title}</h4>
                     <span className="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-100">{item.date}</span>
@@ -450,8 +453,8 @@ export default function PatientProfilePage() {
             ))}
           </div>
 
-          <button className="w-full mt-4 py-3 rounded-xl border border-slate-200 text-slate-600 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
-            View Full History <ArrowRight size={14} />
+          <button className="w-3/4 self-center mt-4 py-4 rounded-xl bg-primary-50 text-primary-600 border border-primary-100/50 text-[13px] font-bold hover:bg-primary-100 hover:text-primary-700 hover:shadow-sm transition-all flex items-center justify-center gap-2 group">
+            View Full History <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
