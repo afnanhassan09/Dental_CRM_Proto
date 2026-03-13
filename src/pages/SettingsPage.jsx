@@ -111,6 +111,7 @@ function InputField({ label, icon: Icon, value, onChange, placeholder }) {
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           className={`w-full h-11 ${Icon ? 'pl-10' : 'pl-4'} pr-4 bg-white rounded-xl border-2 border-slate-100 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-50 transition-all font-medium`}
+          style={Icon ? { paddingLeft: '40px' } : {}}
         />
       </div>
     </div>
@@ -120,7 +121,7 @@ function InputField({ label, icon: Icon, value, onChange, placeholder }) {
 /* ── Section Card ── */
 function Section({ title, description, children }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-5">
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6" style={{ padding: '8px', marginBottom: '8px' }}>
       <div className="mb-5">
         <h3 className="text-[15px] font-extrabold text-slate-800">{title}</h3>
         {description && <p className="text-[12px] text-slate-400 mt-0.5">{description}</p>}
@@ -273,7 +274,8 @@ function StaffTab() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setShowModal(true)}
-            className="h-9 px-4 flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-xs font-bold shadow-md shadow-primary-500/20 hover:shadow-primary-500/30 transition-shadow"
+            className="flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-xs font-bold shadow-md shadow-primary-500/20 hover:shadow-primary-500/30 transition-shadow"
+            style={{ padding: '6px 6px' }}
           >
             <Plus size={14} strokeWidth={3} /> Add Staff
           </motion.button>
@@ -297,10 +299,12 @@ function StaffTab() {
                 <p className="text-[13px] font-bold text-slate-800">{member.name}</p>
                 <p className="text-[11px] text-slate-400 font-medium">{member.role} • {member.email}</p>
               </div>
-              <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full capitalize ${member.status === 'active'
-                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-100'
-                  : 'bg-slate-100 text-slate-500 border border-slate-200'
-                }`}>
+              <span className={`text-[10px] font-bold rounded-full capitalize ${member.status === 'active'
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-100'
+                : 'bg-slate-100 text-slate-500 border border-slate-200'
+                }`}
+                style={{ padding: '2px 3px' }}
+              >
                 {member.status}
               </span>
               <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -394,11 +398,12 @@ function NotificationsTab() {
               key={opt.id}
               onClick={() => setTheme(opt.id)}
               className={`
-                flex-1 flex flex-col items-center gap-2 py-4 rounded-2xl border-2 transition-all duration-200
+                flex-1 flex flex-col items-center gap-2 rounded-2xl border-2 transition-all duration-200
                 ${theme === opt.id
                   ? 'border-primary-400 bg-primary-50 shadow-md shadow-primary-100/50'
                   : 'border-slate-100 hover:border-slate-200 bg-white'}
               `}
+              style={{ padding: '8px' }}
             >
               <opt.icon size={22} className={theme === opt.id ? 'text-primary-600' : 'text-slate-400'} />
               <span className={`text-xs font-bold ${theme === opt.id ? 'text-primary-700' : 'text-slate-500'}`}>{opt.label}</span>
@@ -458,12 +463,12 @@ export default function SettingsPage() {
     >
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Clinic Settings</h1>
-        <p className="text-sm text-slate-400 font-medium mt-1">Manage your clinic configuration and preferences</p>
+        <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight" style={{ marginBottom: '8px' }}>Clinic Settings</h1>
+        <p className="text-sm text-slate-400 font-medium mt-1" style={{ marginBottom: '8px' }}>Manage your clinic configuration and preferences</p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex gap-1 bg-white p-1.5 rounded-2xl border border-slate-100 shadow-sm mb-6 overflow-x-auto">
+      <div className="flex gap-1 bg-white p-1.5 rounded-2xl border border-slate-100 shadow-sm overflow-x-auto" style={{ marginBottom: '10px' }}>
         {TABS.map(tab => {
           const isActive = activeTab === tab.id;
           const Icon = tab.icon;
@@ -472,11 +477,12 @@ export default function SettingsPage() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`
-                flex items-center gap-2 px-5 py-2.5 rounded-xl text-[13px] font-bold transition-all duration-200 whitespace-nowrap
+                flex items-center gap-2 rounded-xl text-[13px] font-bold transition-all duration-200 whitespace-nowrap
                 ${isActive
                   ? 'bg-slate-800 text-white shadow-md'
                   : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}
               `}
+              style={{ padding: '3px 4px' }}
             >
               <Icon size={15} />
               {tab.label}
@@ -496,16 +502,20 @@ export default function SettingsPage() {
 
       {/* Save Bar */}
       <div className="sticky bottom-4 mt-6">
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl p-4 flex items-center justify-between">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-xl flex items-center justify-between" style={{ padding: '8px' }}>
           <p className="text-xs text-slate-400 font-medium">Changes are saved automatically</p>
           <div className="flex gap-3">
-            <button className="h-10 px-5 rounded-xl border-2 border-slate-200 text-slate-600 text-sm font-bold hover:bg-slate-50 transition-colors">
+            <button
+              className="rounded-xl border-2 border-slate-200 text-slate-600 text-sm font-bold hover:bg-slate-50 transition-colors"
+              style={{ padding: '6px 6px' }}
+            >
               Discard
             </button>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="h-10 px-6 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-primary-500/20 flex items-center gap-2"
+              className="bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-primary-500/20 flex items-center gap-2"
+              style={{ padding: '6px 6px' }}
             >
               <Check size={15} /> Save Changes
             </motion.button>
